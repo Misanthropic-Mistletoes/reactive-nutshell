@@ -4,6 +4,7 @@
 import React, { Component } from 'react'
 import EventCard from './EventCard'
 import EventsAPIManager from './EventsAPIManager'
+import './EventsStyles/EventsList.css';
 
 class EventsList extends Component {
     // defines what this component needs to render
@@ -46,7 +47,7 @@ class EventsList extends Component {
                         Add A New Event
                     </button>
                 </section>
-                <div className="container-cards">
+                <div className="eventsList">
                     {/* array function that maps over events array and renders a single card for each event */}
                     {this.state.events.map(event =>
                         <EventCard

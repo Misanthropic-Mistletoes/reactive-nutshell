@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import EventsAPIManager from './EventsAPIManager';
-// import './EventsStyles/EventsList.css';
 
 class EventForm extends Component {
     // defines the key values for a single event

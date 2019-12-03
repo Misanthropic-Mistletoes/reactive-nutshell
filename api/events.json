@@ -31,13 +31,6 @@
   ],
   "events": [
     {
-      "id": 1,
-      "title": "NSS Hackathon",
-      "dateTime": "dateTime into goes here",
-      "location": "Nashville Software School",
-      "userId": 1
-    },
-    {
       "title": "Take Molly to the Doctor",
       "location": "Vanderbilt Children's Clinic",
       "id": 2
@@ -57,11 +50,5 @@
       "userId": 1
     }
   ],
-  "friends": [
-    {
-      "id": 1,
-      "userId": [],
-      "loggedInUserId": 1
-    }
-  ]
+  "friends": []
 }

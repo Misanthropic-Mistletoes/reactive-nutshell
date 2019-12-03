@@ -4,25 +4,25 @@
 // Functionality in EventsList.js
 
 import React, { Component } from 'react'
-// import '../EventsStyles/EventCard.css'
+import './EventsStyles/EventsList.css';
 
 class EventCard extends Component {
   render() {
     console.log(this.props)
     return (
-      <div className="card">
+      <div className="eventCard">
         <div className="card-content">
-          <h3>{this.props.event.title}</h3>
-          <p>{this.props.event.dateTime}</p>
-          <p>{this.props.event.location}</p>
+          <p>Title: {this.props.event.title}</p>
+          <p>Date and Time: {this.props.event.dateTime}</p>
+          <p>Location: {this.props.event.location}</p>
+          <button type="button" onClick={() => this.props.deleteEvent(this.props.event.id)}>Delete</button>
+          <button type="button" onClick={() => { this.props.history.push(`/events/${this.props.event.id}/edit`) }}>Edit</button>
+          <hr />
         </div>
       </div>
+
     );
   }
 }
 
 export default EventCard;
-
-// edit and delete button examples: 
-// <button type="button" onClick={() => this.props.deleteOwner(this.props.owner.id)}>Get Outta Here</button>
-// <button type="button" onClick={() => { this.props.history.push(`/owners/${this.props.animal.id}/edit`) }}>Edit</button>
