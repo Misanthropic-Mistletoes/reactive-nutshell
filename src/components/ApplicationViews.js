@@ -1,5 +1,7 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import EventsList from "./events/EventsList";
+import EventForm from "./events/EventForm";
 
 export default class ApplicationViews extends Component {
 
@@ -41,13 +43,16 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show the user's tasks
           }}
         />
-
-        <Route
-          path="/events" render={props => {
-            return null
-            // Remove null and return the component which will show the user's events
+      {/* EVENTS */}
+        <Route exact path="/events" render={props => {
+            return <EventsList {...props}/>
           }}
         />
+        <Route path="/events/new" render={props => {
+            return <EventForm {...props}/>
+        }} 
+        />
+        
 
       </React.Fragment>
     );
