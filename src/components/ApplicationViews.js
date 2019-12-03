@@ -1,6 +1,5 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
-import EventsList from "./events/EventsList";
 import EventForm from "./events/EventForm";
 
 export default class ApplicationViews extends Component {
