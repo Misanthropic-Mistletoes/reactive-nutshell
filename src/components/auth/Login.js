@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ApiManager from '../modules/ApiManager';
 
 class Login extends Component {
 
@@ -19,19 +20,40 @@ class Login extends Component {
 
     handleLogin = (e) => {
     e.preventDefault()
-        if (this.state.password === this.state.confirmPassword){
-
-            this.props.setUser({
+        if (this.state.password === this.state.confirmPassword) {
+                this.props.setUser({
                 email: this.state.email,
                 password: this.state.password
-            })
+        })
+            const newUser = {
+                email: this.state.email,
+                password: this.state.password
+            }
+            ApiManager.post("users", newUser)
+            .then(ApiManager.getLoggedInUser(this.state.email))
+            .then((user) =>
+            localStorage.setItem("activeUser", user[0].id)
+            )
+            .then(this.props.history.push("/events"))
             // change events to home page as we get further
-            this.props.history.push("/events");
         } else {
             window.alert("Your passwordz must match 🙃")
         }
 
     }
+
+    // handleLogin = (e) => {
+    //     e.preventDefault()
+    //     AdminManager.checkAdmin(this.state.username, this.state.email, this.state.password)
+    //     .then(results=>{
+    //         if(results.length>0) {
+    //             sessionStorage.setItem("credentials", results[0].id)
+    //             this.props.history.push("/");
+    //         } else {
+    //             alert("Incorrect username, email, or password")
+    //         } 
+    //     })
+    // }
 
       render() {
           
