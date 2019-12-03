@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import Login from "./auth/Login";
 import EventsList from "./events/EventsList";
@@ -46,7 +46,7 @@ export default class ApplicationViews extends Component {
             if (this.props.user) {
               return <MessagesList {...props} />
             } else {
-              return <Login {...this.props}/>
+              return <Redirect to="login"/>
             }
           }}
         />
