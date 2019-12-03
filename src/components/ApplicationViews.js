@@ -46,7 +46,7 @@ export default class ApplicationViews extends Component {
             if (this.props.user) {
               return <MessagesList {...props} />
             } else {
-              return <Login />
+              return <Login {...this.props}/>
             }
           }}
         />
