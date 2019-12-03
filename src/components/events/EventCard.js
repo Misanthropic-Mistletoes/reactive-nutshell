@@ -12,7 +12,7 @@ class EventCard extends Component {
     return (
       <div className="eventCard">
         <div className="card-content">
-          <p>Title: {this.props.event.title}</p>
+          <h1>Title: {this.props.event.title}</h1>
           <p>Date and Time: {this.props.event.dateTime}</p>
           <p>Location: {this.props.event.location}</p>
           <button type="button" onClick={() => this.props.deleteEvent(this.props.event.id)}>Delete</button>

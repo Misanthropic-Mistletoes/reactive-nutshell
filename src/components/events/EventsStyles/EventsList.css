@@ -1,6 +1,6 @@
   /* author: Caroline Brownlee */ 
 
-/* CSS that changes styling on the first event in Events List */
+/* CSS that changes styling on the first event in Events List, styling applied on Event Card */
 .eventCard:first-child {
     background-color: rosybrown;
     font-weight: bold; 
