@@ -13,6 +13,11 @@ export default {
     getAll(tableName) {
         return fetch(`${remoteURL}/${tableName}`).then(result => result.json())
     },
+    // This fetch call uses _expand to get all objects including the name associated with the userId.
+    getAllWithUserNames(tableName) {
+        return fetch(`${remoteURL}/${tableName}?_expand=user`).then(result => result.json())
+    },
+
     delete(tableName, id) {
         // This fetch call grabs the id of a single object and deletes it from tableName. 
         return fetch(`${remoteURL}/${tableName}/${id}`, {
