@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Login from "./auth/Login";
 import EventsList from "./events/EventsList";
 import EventForm from "./events/EventForm";
+import ArticlesList from "./events/EventsList";
+
 
 export default class ApplicationViews extends Component {
 
@@ -54,6 +56,17 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show the user's tasks
           }}
         />
+        
+        <Route exact path="/articles" render={props => {
+            return <ArticlesList {...props}/>
+          }}
+        />
+
+        {/* <Route path="/articles/new" render={props => {
+            return <ArticlesForm {...props}/>
+        }} 
+        /> */}
+
       {/* EVENTS */}
         <Route exact path="/events" render={props => {
             return <EventsList {...props}/>
