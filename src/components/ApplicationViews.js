@@ -4,6 +4,7 @@ import Login from "./auth/Login";
 import EventsList from "./events/EventsList";
 import EventForm from "./events/EventForm";
 import ArticlesList from "./events/EventsList";
+import Registration from "./auth/RegisterAccount";
 
 
 export default class ApplicationViews extends Component {
@@ -25,7 +26,6 @@ export default class ApplicationViews extends Component {
             {...props}
             {...this.props}
             />
-            // Remove null and return the component which will show news articles
           }}
         />
 
@@ -67,16 +67,21 @@ export default class ApplicationViews extends Component {
         }} 
         /> */}
 
-      {/* EVENTS */}
+        {/* EVENTS */}
         <Route exact path="/events" render={props => {
             return <EventsList {...props}/>
           }}
         />
+
         <Route path="/events/new" render={props => {
             return <EventForm {...props}/>
         }} 
         />
-        
+
+        {/* <Route path="/login" render={Login} /> */}
+        <Route exact path="/register" render={props => {
+          return <Registration {...this.props}{...props} />
+        }} />
 
       </React.Fragment>
     );
