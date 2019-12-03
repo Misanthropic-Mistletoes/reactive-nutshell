@@ -1,5 +1,8 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import EventsList from "./events/EventsList";
+import EventCard from "./events/EventCard";
+
 
 export default class ApplicationViews extends Component {
 
@@ -41,13 +44,14 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show the user's tasks
           }}
         />
-
+      {/* EVENTS */}
         <Route
-          path="/events" render={props => {
-            return null
-            // Remove null and return the component which will show the user's events
+          exact path="/events" render={props => {
+            return <EventsList {...props}/>
           }}
         />
+        
+        
 
       </React.Fragment>
     );
