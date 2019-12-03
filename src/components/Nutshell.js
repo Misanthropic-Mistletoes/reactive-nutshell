@@ -44,7 +44,8 @@ class Nutshell extends Component {
       <React.Fragment>
         <NavBar />
         <ApplicationViews user={this.state.user}
-                          setUser={this.setUser} />
+                          setUser={this.setUser} 
+                          handleLogin={this.handleLogin}/>
       </React.Fragment>
     );
   }

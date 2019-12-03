@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Login from "./auth/Login";
 import EventsList from "./events/EventsList";
 import EventForm from "./events/EventForm";
+import Registration from "./auth/RegisterAccount";
 
 
 export default class ApplicationViews extends Component {
@@ -17,17 +18,14 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show news articles
           }}
         />
-
         <Route
           exact path="/login" render={props => {
             return <Login 
             {...props}
             {...this.props}
             />
-            // Remove null and return the component which will show news articles
           }}
         />
-
         <Route
           exact path="/register" render={props => {
             return null
@@ -64,6 +62,10 @@ export default class ApplicationViews extends Component {
             return <EventForm {...props}/>
         }} 
         />
+        {/* <Route path="/login" render={Login} /> */}
+        <Route exact path="/register" render={props => {
+          return <Registration {...this.props}{...props} />
+        }} />
         
 
       </React.Fragment>
