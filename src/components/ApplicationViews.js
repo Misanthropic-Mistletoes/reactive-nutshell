@@ -1,5 +1,7 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import Login from "./auth/Login";
+import EventsList from "./events/EventsList";
 import EventForm from "./events/EventForm";
 
 export default class ApplicationViews extends Component {
@@ -11,6 +13,16 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/" render={props => {
             return null
+            // Remove null and return the component which will show news articles
+          }}
+        />
+
+        <Route
+          exact path="/login" render={props => {
+            return <Login 
+            {...props}
+            {...this.props}
+            />
             // Remove null and return the component which will show news articles
           }}
         />
