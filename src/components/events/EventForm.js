@@ -1,46 +1,39 @@
 import React, { Component } from 'react';
-import AnimalManager from '../../modules/AnimalManager';
-import './AnimalForm.css'
-import * as firebase from 'firebase/app';
-import 'firebase/storage';
+import EventsAPIManager from './EventsAPIManager';
+// import './EventsStyles/EventsList.css';
 
-class AnimalForm extends Component {
+class EventForm extends Component {
+    // defines the key values for a single event
     state = {
-        name: "",
-        breed: "",
-        photo: null,
+        title: "",
+        location: "",
+        dateTime: "",
         loadingStatus: false,
     };
 
+    // sets the state of events by reading input values on form
     handleFieldChange = evt => {
         const stateToChange = {};
-        // below is the same as stateToChange.name
         stateToChange[evt.target.id] = evt.target.value;
         this.setState(stateToChange);
     };
-  
-    constructNewAnimal = evt => {
+
+    // function that constructs a new event and sets state 
+    constructNewEvent = evt => {
         evt.preventDefault();
-        if (this.state.name === "" || this.state.breed === "") {
-            window.alert("Please input an animal name and breed");
+        if (this.state.title === "" || this.state.location === ""
+            // || this.state.dateTime === ""
+        ) {
+            window.alert("Please complete all fields.");
         } else {
             this.setState({ loadingStatus: true });
-            // step 1: save Image to Firebase
-            const imagesRef = firebase.storage().ref('images');
-            const childRef = imagesRef.child(`${this.state.name}-${Date.now()}`);
-            childRef.put(this.state.photo)
-                // step 2: get url from firebase
-                .then(response => response.ref.getDownloadURL())
-                // step 3: save everything to json server
-                .then(url => {
-                    const newAnimal = {
-                        name: this.state.name,
-                        breed: this.state.breed,
-                        photo: url
-                    }
-                    return AnimalManager.post(newAnimal)
-                    .then(() => this.props.history.push('/animals'));
-                })
+            const event = {
+                title: this.state.title,
+                location: this.state.location,
+                // dateTime: this.state.dateTime
+            }
+            return EventsAPIManager.post(event)
+                .then(() => this.props.history.push('/events'));
         }
     }
 
@@ -51,34 +44,34 @@ class AnimalForm extends Component {
                 <form>
                     <fieldset>
                         <div className="formgrid">
+                            <label htmlFor="title">Title: </label>
                             <input
                                 type="text"
                                 required
                                 onChange={this.handleFieldChange}
-                                id="name"
-                                placeholder="Animal name"
+                                id="title"
+                                placeholder="Title"
                             />
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="location">Location: </label>
                             <input
                                 type="text"
                                 required
                                 onChange={this.handleFieldChange}
-                                id="breed"
-                                placeholder="Breed"
+                                id="location"
+                                placeholder="Location"
                             />
-                            <label htmlFor="breed">Breed</label>
+                            {/* <label htmlFor="dateTime">Date and Time: </label>
                             <input
-                            type="file"
-                            placeholder="Animal Photo"
-                            onChange={(e) => this.setState({ photo: e.target.files[0] })}
-                            />
-                        <label>Student Photo</label>
+                                type="text"
+                                placeholder="Date and Time"
+                                onChange={this.handleFieldChange}
+                            /> */}
                         </div>
-                        <div className="alignRight">
+                        <div className="eventSubmitButton">
                             <button
                                 type="button"
                                 disabled={this.state.loadingStatus}
-                                onClick={this.constructNewAnimal}
+                                onClick={this.constructNewEvent}
                             >Submit</button>
                         </div>
                     </fieldset>
@@ -88,4 +81,4 @@ class AnimalForm extends Component {
     }
 }
 
-export default AnimalForm
+export default EventForm;
