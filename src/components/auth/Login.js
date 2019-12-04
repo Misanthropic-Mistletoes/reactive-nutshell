@@ -24,7 +24,7 @@ class Login extends Component {
     .then(results=>{
         if(results.length>0) {
             localStorage.setItem("credentials", results[0].id)
-            this.props.history.push("/events");
+            this.props.history.push("/events")
         } else {
             alert("Incorrect username, email, or password")
         } 
