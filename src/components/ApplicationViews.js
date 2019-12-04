@@ -12,8 +12,8 @@ import TaskForm from './tasks/TaskForm';
 import Home from "./home/Home";
 import MessagesList from "./messages/MessagesList";
 import MessageForm from "./messages/MessageForm";
-
 import EventEditForm from "./events/EventEditForm";
+import FriendsList from "./friends/FriendsList";
 
 export default class ApplicationViews extends Component {
 
@@ -40,8 +40,14 @@ export default class ApplicationViews extends Component {
         {/* FRIENDS */}
         <Route
           path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
+            if (this.props.user) {
+              return <FriendsList
+                {...props}
+                {...this.props}
+              />
+            } else {
+              return <Redirect to="login" />
+            }
           }}
         />
         {/* MESSAGES */}
@@ -57,6 +63,11 @@ export default class ApplicationViews extends Component {
             }
           }}
         />
+        <Route
+          exact path="/messages/new" render={props => {
+            return <MessageForm {...props} />
+          }}
+        />
         {/* TASKS */}
         <Route
           exact path="/tasks" render={props => {
@@ -69,18 +80,13 @@ export default class ApplicationViews extends Component {
         }}
         />
 
-        <Route
-          exact path="/messages/new" render={props => {
-            return <MessageForm {...props} />
-          }}
-          />
 
         <Route
           path="/tasks" render={props => {
             return null
             // Remove null and return the component which will show the user's tasks
           }}
-          />
+        />
         {/* ARTICLES */}
         <Route exact path="/articles" render={props => {
           return <ArticlesList {...props} />
