@@ -10,8 +10,8 @@ class Nutshell extends Component {
     user: false
   }
 
-  // Check if credentials are in local storage
-  //returns true/false
+  // isAuthenticated checks if credentials are in local storage
+  // returns true/false
   isAuthenticated = () => localStorage.getItem("credentials") !== null
 
   setUser = (results) => {
