@@ -4,6 +4,7 @@
 import React, { Component } from 'react'
 import MessageCard from './MessageCard'
 import ApiManager from '../modules/ApiManager'
+import MessageForm from './MessageForm'
 
 class MessagesList extends Component {
     //define what this component needs to render
@@ -50,10 +51,11 @@ class MessagesList extends Component {
                     )}
                 </div>
                 <section>
-                    <button type="button"
+                    <MessageForm />
+                    {/* <button type="button"
                         onClick={() => { this.props.history.push("/messages/new") }}>
                         + Compose New Message
-            </button>
+                    </button> */}
                 </section>
             </React.Fragment>
         )
