@@ -11,12 +11,13 @@ import TaskForm from './tasks/TaskForm';
 // import ArticlesEditForm from "./articles/ArticlesEditForm";
 import Home from "./home/Home";
 import MessagesList from "./messages/MessagesList";
+import MessageForm from "./messages/MessageForm";
+
 import EventEditForm from "./events/EventEditForm";
 
 export default class ApplicationViews extends Component {
 
   render() {
-    console.log("applicationviews", this.props)
     return (
       <React.Fragment>
         {/* Home and Authentication */}
@@ -45,7 +46,7 @@ export default class ApplicationViews extends Component {
         />
         {/* MESSAGES */}
         <Route
-          exact path="/messages" render={props => {
+          path="/messages" render={props => {
             if (this.props.user) {
               return <MessagesList
                 {...props}
@@ -67,13 +68,20 @@ export default class ApplicationViews extends Component {
           return <TaskForm {...props} />
         }}
         />
-        {/* ARTICLES */}
+
         <Route
-          path="/articles" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
+          exact path="/messages/new" render={props => {
+            return <MessageForm {...props} />
           }}
-        />
+          />
+
+        <Route
+          path="/tasks" render={props => {
+            return null
+            // Remove null and return the component which will show the user's tasks
+          }}
+          />
+        {/* ARTICLES */}
         <Route exact path="/articles" render={props => {
           return <ArticlesList {...props} />
         }}
