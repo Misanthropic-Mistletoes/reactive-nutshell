@@ -10,7 +10,7 @@ class ArticlesEditForm extends Component {
       title: "",
       synopsis: "",
       url: "",
-      loadingStatus: true,
+      loadingStatus: false,
     };
 
     handleFieldChange = evt => {

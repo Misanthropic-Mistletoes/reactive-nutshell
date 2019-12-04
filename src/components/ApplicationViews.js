@@ -3,9 +3,10 @@ import React, { Component } from "react";
 import Login from "./auth/Login";
 import EventsList from "./events/EventsList";
 import EventForm from "./events/EventForm";
+import ArticlesForm from "./articles/ArticlesForm";
 import ArticlesList from "./articles/ArticlesList";
 import Registration from "./auth/RegisterAccount";
-import ArticlesEditForm from "./articles/ArticlesEditForm";
+// import ArticlesEditForm from "./articles/ArticlesEditForm";
 
 
 export default class ApplicationViews extends Component {
@@ -64,7 +65,7 @@ export default class ApplicationViews extends Component {
         />
 
         <Route path="/articles/new" render={props => {
-            return <ArticlesEditForm {...props}/>
+            return <ArticlesForm {...props}/>
         }} 
         />
 
