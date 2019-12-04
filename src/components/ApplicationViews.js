@@ -5,12 +5,12 @@ import EventsList from "./events/EventsList";
 import EventForm from "./events/EventForm";
 import Registration from "./auth/RegisterAccount";
 import MessagesList from "./messages/MessagesList";
+import MessageForm from "./messages/MessageForm";
 
 
 export default class ApplicationViews extends Component {
 
   render() {
-    console.log("applicationviews", this.props)
     return (
       <React.Fragment>
 
@@ -28,12 +28,6 @@ export default class ApplicationViews extends Component {
             />
           }}
         />
-        <Route
-          exact path="/register" render={props => {
-            return null
-            // Remove null and return the component which will handle user registration
-          }}
-        />
 
         <Route
           path="/friends" render={props => {
@@ -42,17 +36,24 @@ export default class ApplicationViews extends Component {
           }}
         />
 
+        {/************************** MESSAGES **************************/}
         <Route
-          exact path="/messages" render={props => {
+          path="/messages" render={props => {
             if (this.props.user) {
               return <MessagesList
                 {...props}
                 {...this.props}
               />
             } else {
-              return <Redirect to="login"/>
+              return <Redirect to="login" />
             }
           }}
+        />
+
+        <Route
+          path="/messages/new" render={props => {
+          return <MessageForm {...props} />
+        }}
         />
 
         <Route
