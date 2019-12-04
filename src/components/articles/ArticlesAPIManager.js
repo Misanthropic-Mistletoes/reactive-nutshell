@@ -2,24 +2,24 @@ const remoteURL = "http://localhost:5002"
 
 export default {
   get(id) {
-    return fetch(`${remoteURL}/events/${id}`).then(result => result.json())
+    return fetch(`${remoteURL}/articles/${id}`).then(result => result.json())
   },
   getAll() {
-    return fetch(`${remoteURL}/events`).then(result => result.json())
+    return fetch(`${remoteURL}/articles`).then(result => result.json())
   },
   delete(id) {
-    return fetch(`${remoteURL}/events/${id}`, {
+    return fetch(`${remoteURL}/articles/${id}`, {
         method: "DELETE"
     })
     .then(result => result.json())
   },
-  post(newEvent) {
-    return fetch(`${remoteURL}/events`, {
+  post(newArticle) {
+    return fetch(`${remoteURL}/articles`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(newEvent)
+        body: JSON.stringify(newArticle)
     }).then(data => data.json())
   }
 }

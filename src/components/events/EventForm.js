@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventsAPIManager from './EventsAPIManager';
+import ApiManager from '../modules/ApiManager';
 
 class EventForm extends Component {
     // defines the key values for a single event
@@ -31,7 +31,7 @@ class EventForm extends Component {
                 location: this.state.location,
                 // dateTime: this.state.dateTime
             }
-            return EventsAPIManager.post(event)
+            return ApiManager.post("events", event)
                 .then(() => this.props.history.push('/events'));
         }
     }

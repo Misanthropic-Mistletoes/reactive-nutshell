@@ -3,8 +3,9 @@
 
 import React, { Component } from 'react'
 import EventCard from './EventCard'
-import EventsAPIManager from './EventsAPIManager'
 import './EventsStyles/EventsList.css';
+import ApiManager from '../modules/ApiManager';
+
 
 class EventsList extends Component {
     // defines what this component needs to render
@@ -14,7 +15,7 @@ class EventsList extends Component {
 
     componentDidMount() {
         //getAll from EventsAPIManager, hangs on to that data, and puts it into state
-        EventsAPIManager.getAll()
+        ApiManager.getAll("events")
             .then((events) => {
                 this.setState({
                     events: events
@@ -24,9 +25,9 @@ class EventsList extends Component {
 
     deleteEvent = id => {
         // handles deleting a single event from events array and renders updated array to the DOM
-        EventsAPIManager.delete(id)
+        ApiManager.delete("events", id)
             .then(() => {
-                EventsAPIManager.getAll()
+                ApiManager.getAll("events")
                     .then((updatedEventsList) => {
                         this.setState({
                             events: updatedEventsList
@@ -54,6 +55,8 @@ class EventsList extends Component {
                             key={event.id}
                             event={event}
                             deleteEvent={this.deleteEvent}
+                            // The router props need to be passed through <EventsList> to <EventCard> component. Spread operator copies properties from a provided object onto a new object.
+                            {...this.props}
                         />
                     )}
                 </div>
@@ -63,6 +66,3 @@ class EventsList extends Component {
 }
 
 export default EventsList;
-
-
-
