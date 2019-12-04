@@ -12,8 +12,8 @@ import TaskForm from './tasks/TaskForm';
 import Home from "./home/Home";
 import MessagesList from "./messages/MessagesList";
 import MessageForm from "./messages/MessageForm";
-
 import EventEditForm from "./events/EventEditForm";
+import ArticlesEditForm from "./articles/ArticlesEditForm";
 
 export default class ApplicationViews extends Component {
 
@@ -82,12 +82,23 @@ export default class ApplicationViews extends Component {
           }}
           />
         {/* ARTICLES */}
-        <Route exact path="/articles" render={props => {
-          return <ArticlesList {...props} />
+        <Route 
+          exact path="/articles" render={props => {
+            return <ArticlesList 
+            {...props} />
         }}
         />
+
         <Route path="/articles/new" render={props => {
-          return <ArticlesForm {...props} />
+          return <ArticlesForm 
+          {...props} />
+        }}
+        />
+
+        <Route
+          path="/articles/:articleId(\d+)/edit" render={props => {
+            return <ArticlesEditForm 
+            {...props} />
         }}
         />
         {/* EVENTS */}
