@@ -63,16 +63,12 @@ export default class ApplicationViews extends Component {
 
           }}
         />
-<<<<<<< HEAD
         <Route path="/tasks/new" render={props => {
             return <TaskForm {...props}/>
         }} 
         />
 
       {/* EVENTS */}
-=======
-        {/* EVENTS */}
->>>>>>> f32568efdc6a8cd610f317a2b885a2291f43c3d0
         <Route exact path="/events" render={props => {
           return <EventsList {...props} />
         }}
