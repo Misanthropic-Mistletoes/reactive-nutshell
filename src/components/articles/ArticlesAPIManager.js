@@ -13,13 +13,13 @@ export default {
     })
     .then(result => result.json())
   },
-  post(newEvent) {
+  post(newArticle) {
     return fetch(`${remoteURL}/articles`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(newEvent)
+        body: JSON.stringify(newArticle)
     }).then(data => data.json())
   }
 }

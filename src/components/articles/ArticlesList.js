@@ -2,8 +2,8 @@
 // This Module Handles Setting the State of Articles, Rendering List of Article Cards to the DOM, and Delete and Edit Functionality for A Single Article 
 
 import React, { Component } from 'react'
-import ArticleCard from './ArticleCard'
-import ArticleAPIManager from './ArticlesAPIManager'
+import ArticleCard from './ArticlesCard'
+import ArticlesAPIManager from './ArticlesAPIManager'
 import './ArticlesStyles/ArticlesList.css';
 
 class ArticlesList extends Component {
@@ -34,7 +34,7 @@ class ArticlesList extends Component {
                     })
             })
     }
-
+    
     render() {
         return (
             <>
@@ -51,9 +51,9 @@ class ArticlesList extends Component {
                     {/* array function that maps over articles array and renders a single card for each article */}
                     {this.state.articles.map(article =>
                         <ArticleCard
-                            key={article.id}
-                            article={article}
-                            deleteArticle={this.deleteArticle}
+                        key={article.id}
+                        article={article}
+                        deleteArticle={this.deleteArticle}
                         />
                     )}
                 </div>
