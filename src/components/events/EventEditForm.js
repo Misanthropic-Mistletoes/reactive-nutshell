@@ -10,7 +10,7 @@ class EventEditForm extends Component {
     state = {
         title: "",
         location: "",
-        dateTime: "",
+        date: "",
         loadingStatus: false,
     };
 
@@ -31,7 +31,7 @@ class EventEditForm extends Component {
           id: this.props.match.params.eventId,
           title: this.state.title,
           location: this.state.location,
-        //   dateTime: this.state.dateTime
+          date: this.state.date
         };
         // fetch call to change data in API
         ApiManager.update("events", editedEvent)
@@ -47,7 +47,8 @@ class EventEditForm extends Component {
             this.setState({
               title: event.title,
               location: event.location,
-              loadingStatus: false,
+              date: this.state.date,
+              loadingStatus: false
             });
         });
       }
@@ -78,12 +79,14 @@ class EventEditForm extends Component {
                                 placeholder="Location"
                                 value={this.state.location}
                             />
-                            {/* <label htmlFor="dateTime">Date and Time: </label>
-                            <input
-                                type="text"
-                                placeholder="Date and Time"
+                            <label htmlFor="date">Date: </label>
+                            <input 
+                                type="date" 
+                                required
                                 onChange={this.handleFieldChange}
-                            /> */}
+                                id="date"
+                                value={this.state.date}
+                            ></input>
                         </div>
                         <div className="eventSubmitButton">
                             <button
