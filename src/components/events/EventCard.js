@@ -1,7 +1,7 @@
 // author:  Caroline Brownlee
 
 // This Module Returns JSX for A Single Event
-// Functionality in EventsList.js
+// Renders in EventsList.js
 
 import React, { Component } from 'react'
 import './EventsStyles/EventsList.css';
