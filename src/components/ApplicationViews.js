@@ -6,6 +6,8 @@ import EventForm from "./events/EventForm";
 import ArticlesForm from "./articles/ArticlesForm";
 import ArticlesList from "./articles/ArticlesList";
 import Registration from "./auth/RegisterAccount";
+import TasksList from "./tasks/TasksList"
+import TaskForm from './tasks/TaskForm'
 // import ArticlesEditForm from "./articles/ArticlesEditForm";
 import Home from "./home/Home";
 import MessagesList from "./messages/MessagesList";
@@ -54,6 +56,18 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
+          exact path="/tasks" render={props => {
+            return <TasksList {...props} />
+
+          }}
+        />
+        <Route path="/tasks/new" render={props => {
+            return <TaskForm {...props}/>
+        }} 
+        />
+
+      {/* EVENTS */}
+         <Route 
           path="/articles" render={props => {
             return null
             // Remove null and return the component which will show the messages
