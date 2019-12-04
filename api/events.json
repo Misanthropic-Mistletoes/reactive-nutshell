@@ -1,0 +1,55 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Jisie Rocks",
+      "email": "jisie@rocks.com"
+    },
+    {
+      "id": 2,
+      "username": "Rose Rocks",
+      "email": "Rose@rocks.com"
+    },
+    {
+      "name": "shrek",
+      "email": "shrek@msn.com",
+      "password": "hi",
+      "id": 3
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "title": "Don't leave your laptop at home.",
+      "synopsis": "Or you will be screwed.",
+      "url": "http://url.com",
+      "userId": 1,
+      "timestamp": "(timestamp info goes here)"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "userId": 1,
+      "message": "Hey, how is it going?",
+      "timestamp": "(timestamp info goes here)"
+    }
+  ],
+  "events": [
+    {
+      "title": "hello",
+      "location": "test",
+      "id": 4
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Walk the dog.",
+      "dueDate": "December 2, 2019",
+      "completed": false,
+      "userId": 1
+    }
+  ],
+  "friends": []
+}
