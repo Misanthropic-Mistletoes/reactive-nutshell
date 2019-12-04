@@ -6,7 +6,7 @@ class EventForm extends Component {
     state = {
         title: "",
         location: "",
-        dateTime: "",
+        date: "",
         loadingStatus: false,
     };
 
@@ -29,7 +29,7 @@ class EventForm extends Component {
             const event = {
                 title: this.state.title,
                 location: this.state.location,
-                // dateTime: this.state.dateTime
+                date: this.state.date
             }
             return ApiManager.post("events", event)
                 .then(() => this.props.history.push('/events'));
@@ -59,12 +59,13 @@ class EventForm extends Component {
                                 id="location"
                                 placeholder="Location"
                             />
-                            {/* <label htmlFor="dateTime">Date and Time: </label>
-                            <input
-                                type="text"
-                                placeholder="Date and Time"
+                            <label htmlFor="date">Date: </label>
+                            <input 
+                                type="date" 
+                                required
                                 onChange={this.handleFieldChange}
-                            /> */}
+                                id="date"
+                            ></input>
                         </div>
                         <div className="eventSubmitButton">
                             <button

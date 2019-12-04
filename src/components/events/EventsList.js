@@ -17,18 +17,20 @@ class EventsList extends Component {
         //getAll from EventsAPIManager, hangs on to that data, and puts it into state
         ApiManager.getAll("events")
             .then((events) => {
+                events.sort((a,b) => new Date(...a.date.split('/').reverse()) - new Date(...b.date.split('/').reverse()));
                 this.setState({
                     events: events
                 })
             })
     }
-
+    
     deleteEvent = id => {
         // handles deleting a single event from events array and renders updated array to the DOM
         ApiManager.delete("events", id)
             .then(() => {
                 ApiManager.getAll("events")
                     .then((updatedEventsList) => {
+                        updatedEventsList.sort((a,b) => new Date(...a.date.split('/').reverse()) - new Date(...b.date.split('/').reverse()))
                         this.setState({
                             events: updatedEventsList
                         })
