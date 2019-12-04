@@ -1,19 +1,11 @@
-// This component will populate the input fields with the current values from the API. We will obtain the animal details via a fetch call in componentDidMount.
+// This component will populate the input fields with the current values from the API. We will obtain the event details via a fetch call in componentDidMount.
 
-// Component loads - Save button should be disabled since the data is not available yet..
-// componentDidMount() calls API to get the animal based on the animalId in the URL.
-// Data loads and setState() is invoked with new data (also set loadingStatus to false)
-// render() is invoked, displaying animal details and ready for edits.
-// Make changes. As changes are made, state is updated. Select save.
-// The updateExistingAnimal method will setState loadingStatus to true - this ensures the user cannot repeatedly click button while API is being updated.
-// Invoke AnimalManger.put to change the API data.
-// Once the API has updated, change the view to display all the animals.
+// author: Caroline Brownlee //
 
 import React, { Component } from 'react';
-import EventsAPIManager from './EventsAPIManager';
 import ApiManager from '../modules/ApiManager';
 
-class EventForm extends Component {
+class EventEditForm extends Component {
     // set the initial state
     state = {
         title: "",
@@ -29,7 +21,8 @@ class EventForm extends Component {
         this.setState(stateToChange);
     };
 
-    // function that updates existing event
+    // updateExistingEvent method will setState loadingStatus to true - this ensures the user cannot repeatedly click button while API is being updated
+    // This method will take the updated event as an object and save to the database.
     updateExistingEvent = evt => {
         evt.preventDefault()
         this.setState({ loadingStatus: true });
@@ -40,30 +33,26 @@ class EventForm extends Component {
           location: this.state.location,
         //   dateTime: this.state.dateTime
         };
-        // fetch call to update event object in database
-        ApiManager.update(editedAnimal)
-        .then(() => this.props.history.push("/animals"))
+        // fetch call to change data in API
+        ApiManager.update("events", editedEvent)
+        .then(() => this.props.history.push("/events"))
       }
 
-    // function that constructs a new event and sets state 
-    constructNewEvent = evt => {
-        evt.preventDefault();
-        if (this.state.title === "" || this.state.location === ""
-            // || this.state.dateTime === ""
-        ) {
-            window.alert("Please complete all fields.");
-        } else {
-            this.setState({ loadingStatus: true });
-            const event = {
-                title: this.state.title,
-                location: this.state.location,
-                // dateTime: this.state.dateTime
-            }
-            return EventsAPIManager.post(event)
-                .then(() => this.props.history.push('/events'));
-        }
-    }
+    //  function calls to API to get event based on the eventId in the URL
+      componentDidMount() {
+        // Data loads and setState() is invoked with new data (also set loadingStatus to false)
+        ApiManager.get("events", this.props.match.params.eventId)
+        .then(event => {
+            console.log(event)
+            this.setState({
+              title: event.title,
+              location: event.location,
+              loadingStatus: false,
+            });
+        });
+      }
 
+    //   render() is invoked, displaying event details and ready for editing
     render() {
 
         return (
@@ -78,6 +67,7 @@ class EventForm extends Component {
                                 onChange={this.handleFieldChange}
                                 id="title"
                                 placeholder="Title"
+                                value={this.state.title}
                             />
                             <label htmlFor="location">Location: </label>
                             <input
@@ -86,6 +76,7 @@ class EventForm extends Component {
                                 onChange={this.handleFieldChange}
                                 id="location"
                                 placeholder="Location"
+                                value={this.state.location}
                             />
                             {/* <label htmlFor="dateTime">Date and Time: </label>
                             <input
@@ -98,7 +89,7 @@ class EventForm extends Component {
                             <button
                                 type="button"
                                 disabled={this.state.loadingStatus}
-                                onClick={this.constructNewEvent}
+                                onClick={this.updateExistingEvent}
                             >Submit</button>
                         </div>
                     </fieldset>
@@ -108,4 +99,4 @@ class EventForm extends Component {
     }
 }
 
-export default EventForm;
+export default EventEditForm;

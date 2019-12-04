@@ -55,6 +55,8 @@ class EventsList extends Component {
                             key={event.id}
                             event={event}
                             deleteEvent={this.deleteEvent}
+                            // The router props need to be passed through <EventsList> to <EventCard> component. Spread operator copies properties from a provided object onto a new object.
+                            {...this.props}
                         />
                     )}
                 </div>
@@ -64,6 +66,3 @@ class EventsList extends Component {
 }
 
 export default EventsList;
-
-
-

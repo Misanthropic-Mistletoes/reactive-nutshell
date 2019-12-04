@@ -6,7 +6,7 @@ import EventForm from "./events/EventForm";
 import Registration from "./auth/RegisterAccount";
 import Home from "./home/Home";
 import MessagesList from "./messages/MessagesList";
-
+import EventEditForm from "./events/EventEditForm";
 
 export default class ApplicationViews extends Component {
 
@@ -40,7 +40,7 @@ export default class ApplicationViews extends Component {
                 {...this.props}
               />
             } else {
-              return <Redirect to="login"/>
+              return <Redirect to="login" />
             }
           }}
         />
@@ -66,6 +66,10 @@ export default class ApplicationViews extends Component {
           return <EventForm {...props} />
         }}
         />
+        <Route path="/events/:eventId(\d+)/edit" render={props => {
+          return <EventEditForm {...props} />
+        }}
+      />
         <Route exact path="/register" render={props => {
           return <Registration {...this.props}{...props} />
         }} />
