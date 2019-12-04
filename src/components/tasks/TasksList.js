@@ -50,6 +50,7 @@ class TasksList extends Component {
                         key={task.id}
                         task={task}
                         deleteTask={this.deleteTask}
+                        {...this.props}
                         />
                     )}
                 </div>

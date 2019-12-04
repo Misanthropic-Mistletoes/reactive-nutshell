@@ -18,16 +18,16 @@ class TaskForm extends Component {
     constructNewTask = evt => {
         evt.preventDefault();
         if (this.state.taskName === "" || this.state.dueDate === "") {
-            window.alert("Please input a Due Date muthaf*****!");
+            window.alert("Please input a F***ing Due Date!");
         } else {
             this.setState({ loadingStatus: true });
             const task = {
                 name: this.state.taskName,
                 dueDate: this.state.dueDate,
-            };
-
+            }
             // Create the task and redirect user to task list
-            TasksAPIManager.post(task)
+            
+           return  TasksAPIManager.post(task)
             .then(() => this.props.history.push("/tasks"));
         }
     };

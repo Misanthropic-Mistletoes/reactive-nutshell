@@ -1,100 +1,84 @@
-// import React, { Component } from "react"
-// import APIManager from "../modules/ApiManager"
+import React, { Component } from "react"
+import TasksAPIManager from "./TasksAPIManager"
 
-// class TaskEditForm extends Component {
-   
-//     state = {
-//       taskName: "",
-//       dueDate: "",
-//     loadingStatus: true,
-//     };
+class TaskEditForm extends Component {
+    state = {
+        taskName: "",
+        dueDate: "",
+        loadingStatus: true,
+    };
 
-//     handleFieldChange = evt => {
-//       const stateToChange = {}
-//       stateToChange[evt.target.id] = evt.target.value
-//       this.setState(stateToChange)
-//     }
+    handleFieldChange = evt => {
+      const stateToChange = {};
+      stateToChange[evt.target.id] = evt.target.value;
+      this.setState(stateToChange);
+    };
 
-//     updateExistingTask = evt => {
-//       evt.preventDefault()
-//       this.setState({ loadingStatus: true });
-//       const editedTask = {
-//         id: this.props.match.params.taskId,
-//         name: this.state.taskName,
-//         date: this.state.dueDate,
-//         userId: Number(this.state.userId)
-//       };
+    updateExistingTask = evt => {
+      evt.preventDefault()
+      this.setState({ loadingStatus: true });
+      const editedTask = {
+        id: this.props.match.params.taskId,
+        name: this.state.taskName,
+        dueDate: this.state.dueDate,
+      };
 
-//       APIManager.update("tasks", editedTask)
-//       .then(() => this.props.history.push("/tasks"))
-//     }
+      TasksAPIManager.update(editedTask)
+      .then(() => this.props.history.push("/tasks"))
+    }
 
-//     componentDidMount() {
-//       APIManager.get("tasks", this.props.match.params.taskId)
-//       .then(task => {
-//         this.setState({
-//           taskName: task.name,
-//           dueDate: animal.dueDate,
-//           userId: task.userId,
-//           loadingStatus: false,
-//         });
-//       });
+    componentDidMount() {
+      TasksAPIManager.get(this.props.match.params.taskId)
+      .then(task => {
+        this.setState({
+          taskName: task.name,
+          dueDate: task.dueDate,
+          loadingStatus: false,
+        });
+      });
 
-//     APIManager.getAll("tasks")
-//     .then(tasks => this.setState({tasks: tasks}))
-//   }
+    // TasksAPIManager.getAll("tasks")
+    // .then(tasks => this.setState({tasks: tasks}))
+  }
 
-//     render() {
-//       return (
-//         <>
-//         <form>
-//           <fieldset>
-//             <div className="formgrid">
-//               <input
-//                 type="text"
-//                 required
-//                 className="form-control"
-//                 onChange={this.handleFieldChange}
-//                 id="taskName"
-//                 value={this.state.taskName}
-//               />
-//               <label htmlFor="taskName">Task Name</label>
+    render() {
+      return (
+        <>
+        <form>
+          <fieldset>
+            <div className="formgrid">
+                <label htmlFor="taskName">Task Name</label>
+              <input
+                type="text"
+                required
+                className="form-control"
+                onChange={this.handleFieldChange}
+                id="taskName"
+                value={this.state.taskName}
+              />
 
-//               <input
-//                 type="text"
-//                 required
-//                 className="form-control"
-//                 onChange={this.handleFieldChange}
-//                 id="dueDate"
-//                 value={this.state.dueDate}
-//               />
-//               <label htmlFor="dueDate">Due Date</label>
+                <label htmlFor="dueDate">Due Date</label>
+              <input
+                type="date"
+                required
+                className="form-control"
+                onChange={this.handleFieldChange}
+                id="dueDate"
+                value={this.state.dueDate}
+              />
+            </div>
+            <div className="alignRight">
+              <button
+                type="button" disabled={this.state.loadingStatus}
+                onClick={this.updateExistingTask}
+                className="btn-primary"
+              >Submit</button>
+            </div>
+          </fieldset>
+        </form>
+      </>
+    );
+  }
+}
 
-//               <select
-//                 className="form-control"
-//                 id="userId"
-//                 value={this.state.userId}
-//                 onChange={this.handleFieldChange}
-//               >
-//                 {this.state.user.map(user =>
-//                   <option key={user.id} value={user.id}>
-//                     {user.name}
-//                   </option>
-//                 )}
-//               </select>
-//             </div>
-//             <div className="alignRight">
-//               <button
-//                 type="button" disabled={this.state.loadingStatus}
-//                 onClick={this.updateExistingTask}
-//                 className="btn btn-primary"
-//               >Submit</button>
-//             </div>
-//           </fieldset>
-//         </form>
-//       </>
-//     );
-//   }
-// }
-
-// export default TaskEditForm
+export default TaskEditForm
