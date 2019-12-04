@@ -4,22 +4,20 @@ import Login from "./auth/Login";
 import EventsList from "./events/EventsList";
 import EventForm from "./events/EventForm";
 import Registration from "./auth/RegisterAccount";
+import Home from "./home/Home";
 import MessagesList from "./messages/MessagesList";
 import MessageForm from "./messages/MessageForm";
 
+import EventEditForm from "./events/EventEditForm";
 
 export default class ApplicationViews extends Component {
 
   render() {
     return (
       <React.Fragment>
-
-        <Route
-          exact path="/" render={props => {
-            return null
-            // Remove null and return the component which will show news articles
-          }}
-        />
+        <Route exact path="/" render={(props) => {
+          return <Home {...props} />
+        }} />
         <Route
           exact path="/login" render={props => {
             return <Login
@@ -28,7 +26,6 @@ export default class ApplicationViews extends Component {
             />
           }}
         />
-
         <Route
           path="/friends" render={props => {
             return null
@@ -47,6 +44,12 @@ export default class ApplicationViews extends Component {
             } else {
               return <Redirect to="login" />
             }
+          }}
+        />
+        <Route
+          path="/articles" render={props => {
+            return null
+            // Remove null and return the component which will show the messages
           }}
         />
 
@@ -71,7 +74,10 @@ export default class ApplicationViews extends Component {
           return <EventForm {...props} />
         }}
         />
-        {/* <Route path="/login" render={Login} /> */}
+        <Route path="/events/:eventId(\d+)/edit" render={props => {
+          return <EventEditForm {...props} />
+        }}
+      />
         <Route exact path="/register" render={props => {
           return <Registration {...this.props}{...props} />
         }} />
