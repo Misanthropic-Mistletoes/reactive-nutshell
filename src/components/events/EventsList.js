@@ -23,8 +23,6 @@ class EventsList extends Component {
                 })
             })
     }
-
-    // let sortedCars1 = cars.sort((a, b) => new Date(...a.date.split('/').reverse()) - new Date(...b.initialRegistration.split('/').reverse()));
     
     deleteEvent = id => {
         // handles deleting a single event from events array and renders updated array to the DOM
