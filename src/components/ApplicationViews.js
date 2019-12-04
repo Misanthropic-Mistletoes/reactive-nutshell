@@ -57,6 +57,15 @@ export default class ApplicationViews extends Component {
             }
           }}
         />
+
+        <Route
+          exact path="/messages/new" render={props => {
+            return <MessageForm {...props} />
+          }}
+        />
+
+        <Route
+          path="/messages/:"
         {/* TASKS */}
         <Route
           exact path="/tasks" render={props => {
@@ -69,11 +78,6 @@ export default class ApplicationViews extends Component {
         }}
         />
 
-        <Route
-          exact path="/messages/new" render={props => {
-            return <MessageForm {...props} />
-          }}
-          />
 
         <Route
           path="/tasks" render={props => {
