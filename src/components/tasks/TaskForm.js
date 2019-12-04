@@ -27,7 +27,7 @@ class TaskForm extends Component {
             }
             // Create the task and redirect user to task list
             
-           return  ApiManager.post(task)
+           return  ApiManager.post("tasks", task)
             .then(() => this.props.history.push("/tasks"));
         }
     };

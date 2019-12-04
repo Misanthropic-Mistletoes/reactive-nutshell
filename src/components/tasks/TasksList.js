@@ -2,8 +2,8 @@
 // This Module Handles Setting the State of Articles, Rendering List of Article Cards to the DOM, and Delete and Edit Functionality for A Single Article 
 import React, { Component } from 'react'
 import TaskCard from './TaskCard'
-import TasksAPIManager from './TasksAPIManager'
 import './TasksStyles/TasksList.css';
+import ApiManager from '../modules/ApiManager';
 class TasksList extends Component {
     // defines what this component needs to render
     state = {
@@ -11,7 +11,7 @@ class TasksList extends Component {
     }
     componentDidMount() {
         //getAll from ArticlesAPIManager, hangs on to that data, and puts it into state
-        TasksAPIManager.getAll()
+        ApiManager.getAll("tasks")
             .then((tasks) => {
                 this.setState({
                     tasks: tasks
@@ -20,9 +20,9 @@ class TasksList extends Component {
     }
     deleteTask= id => {
         // handles deleting a single article from articles array and renders updated array to the DOM
-        TasksAPIManager.delete(id)
+        ApiManager.delete("tasks", id)
             .then(() => {
-                TasksAPIManager.getAll()
+                ApiManager.getAll("tasks")
                     .then((updatedTasksList) => {
                         this.setState({
                             tasks: updatedTasksList

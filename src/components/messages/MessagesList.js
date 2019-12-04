@@ -35,7 +35,7 @@ class MessagesList extends Component {
     deleteMessage = id => {
         ApiManager.delete("messages", id)
             .then(() => {
-                ApiManager.getAll("messages")
+                ApiManager.getAllWithUserNames("messages")
                     .then((newMessages) => {
                         this.setState({
                             messages: newMessages
@@ -45,6 +45,7 @@ class MessagesList extends Component {
     }
 
     render() {
+        console.log("this.state", this.state)
         return (
             <React.Fragment>
                 <div className="container-cards">
@@ -55,6 +56,7 @@ class MessagesList extends Component {
                             message={message.message}
                             timestamp={message.timestamp}
                             deleteMessage={this.deleteMessage}
+                            id={message.id}
                             {...this.props}
                         />
                     )}
