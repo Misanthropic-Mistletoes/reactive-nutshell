@@ -65,6 +65,7 @@ export default class ApplicationViews extends Component {
         />
 
       {/* EVENTS */}
+         <Route 
           path="/articles" render={props => {
             return null
             // Remove null and return the component which will show the messages
