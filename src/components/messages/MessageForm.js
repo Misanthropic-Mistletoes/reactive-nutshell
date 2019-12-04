@@ -12,13 +12,6 @@ class MessageForm extends Component {
         timestamp: "",
         loadingStatus: false,
     };
-
-/*     componentDidMount() {
-        ApiManager.getAll("messages").then(messagesArray => this.setState({
-            messages: messagesArray,
-            messageId: messagesArray[0].id
-        }))
-    }; */
     
     handleFieldChange = evt => {
         const stateToChange = {};
