@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import TasksAPIManager from "./TasksAPIManager"
+import ApiManager from "../modules/ApiManager";
 
 class TaskEditForm extends Component {
     state = {
@@ -23,12 +23,12 @@ class TaskEditForm extends Component {
         dueDate: this.state.dueDate,
       };
 
-      TasksAPIManager.update(editedTask)
+      ApiManager.update("tasks", editedTask)
       .then(() => this.props.history.push("/tasks"))
     }
 
     componentDidMount() {
-      TasksAPIManager.get(this.props.match.params.taskId)
+      ApiManager.get("tasks",this.props.match.params.taskId)
       .then(task => {
         this.setState({
           taskName: task.name,
@@ -37,7 +37,7 @@ class TaskEditForm extends Component {
         });
       });
 
-    // TasksAPIManager.getAll("tasks")
+    // ApiManager.getAll("tasks")
     // .then(tasks => this.setState({tasks: tasks}))
   }
 
@@ -71,7 +71,7 @@ class TaskEditForm extends Component {
               <button
                 type="button" disabled={this.state.loadingStatus}
                 onClick={this.updateExistingTask}
-                className="btn-primary"
+                className="btn btn-primary"
               >Submit</button>
             </div>
           </fieldset>

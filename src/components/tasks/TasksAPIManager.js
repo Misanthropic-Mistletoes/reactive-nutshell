@@ -22,13 +22,13 @@ export default {
     }).then(data => data.json())
   },
 
-  update(editedAnimal) {
-    return fetch(`${remoteURL}/animals/${editedAnimal.id}`, {
+  update(editedTask) {
+    return fetch(`${remoteURL}/tasks/${editedTask.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(editedAnimal)
+      body: JSON.stringify(editedTask)
     }).then(data => data.json());
   }
 }

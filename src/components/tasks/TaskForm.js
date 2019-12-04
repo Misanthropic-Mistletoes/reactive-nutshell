@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TasksAPIManager from './TasksAPIManager';
+import ApiManager from '../modules/ApiManager';
 
 class TaskForm extends Component {
     state = {
@@ -27,7 +27,7 @@ class TaskForm extends Component {
             }
             // Create the task and redirect user to task list
             
-           return  TasksAPIManager.post(task)
+           return  ApiManager.post(task)
             .then(() => this.props.history.push("/tasks"));
         }
     };
