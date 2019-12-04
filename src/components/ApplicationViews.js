@@ -4,6 +4,8 @@ import Login from "./auth/Login";
 import EventsList from "./events/EventsList";
 import EventForm from "./events/EventForm";
 import Registration from "./auth/RegisterAccount";
+import TasksList from "./tasks/TasksList"
+import TaskForm from './tasks/TaskForm'
 
 
 export default class ApplicationViews extends Component {
@@ -48,11 +50,16 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/tasks" render={props => {
-            return null
-            // Remove null and return the component which will show the user's tasks
+          exact path="/tasks" render={props => {
+            return <TasksList {...props} />
+
           }}
         />
+        <Route path="/tasks/new" render={props => {
+            return <TaskForm {...props}/>
+        }} 
+        />
+
       {/* EVENTS */}
         <Route exact path="/events" render={props => {
             return <EventsList {...props}/>
