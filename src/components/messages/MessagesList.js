@@ -12,6 +12,15 @@ class MessagesList extends Component {
         messages: [],
     }
 
+    updateMessages = () => {
+        ApiManager.getAllWithUserNames("messages")
+            .then((messagesArray) => {
+                this.setState({
+                    messages: messagesArray
+                })
+            })
+    }
+
     componentDidMount() {
         //getAll from ApiManager and hang on to that data; put it in state
         ApiManager.getAllWithUserNames("messages")
@@ -51,7 +60,7 @@ class MessagesList extends Component {
                     )}
                 </div>
                 <section>
-                    <MessageForm />
+                    <MessageForm updateMessages={this.updateMessages}/>
                     {/* <button type="button"
                         onClick={() => { this.props.history.push("/messages/new") }}>
                         + Compose New Message

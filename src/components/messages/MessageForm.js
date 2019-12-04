@@ -13,12 +13,12 @@ class MessageForm extends Component {
         loadingStatus: false,
     };
 
-    componentDidMount() {
+/*     componentDidMount() {
         ApiManager.getAll("messages").then(messagesArray => this.setState({
             messages: messagesArray,
             messageId: messagesArray[0].id
         }))
-    };
+    }; */
     
     handleFieldChange = evt => {
         const stateToChange = {};
@@ -52,7 +52,10 @@ class MessageForm extends Component {
                 console.log("message", message)
 
                 ApiManager.post("messages", message)
-                .then(() => this.props.history.push("/messages"));
+                .then(() => {
+                    this.props.updateMessages()
+                    this.setState({ loadingStatus: false })
+                });
                 //^ reload Messages list after post request is done
             }
     };
