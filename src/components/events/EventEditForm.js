@@ -67,6 +67,7 @@ class EventEditForm extends Component {
                                 onChange={this.handleFieldChange}
                                 id="title"
                                 placeholder="Title"
+                                // value puts the data into the form field
                                 value={this.state.title}
                             />
                             <label htmlFor="location">Location: </label>
@@ -76,6 +77,7 @@ class EventEditForm extends Component {
                                 onChange={this.handleFieldChange}
                                 id="location"
                                 placeholder="Location"
+                                // value puts the data into the form field
                                 value={this.state.location}
                             />
                             {/* <label htmlFor="dateTime">Date and Time: </label>
