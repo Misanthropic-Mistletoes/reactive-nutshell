@@ -1,14 +1,16 @@
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import Login from "./auth/Login";
 import EventsList from "./events/EventsList";
 import EventForm from "./events/EventForm";
 import Registration from "./auth/RegisterAccount";
+import MessagesList from "./messages/MessagesList";
 
 
 export default class ApplicationViews extends Component {
 
   render() {
+    console.log("applicationviews", this.props)
     return (
       <React.Fragment>
 
@@ -20,9 +22,9 @@ export default class ApplicationViews extends Component {
         />
         <Route
           exact path="/login" render={props => {
-            return <Login 
-            {...props}
-            {...this.props}
+            return <Login
+              {...props}
+              {...this.props}
             />
           }}
         />
@@ -41,9 +43,15 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
+          exact path="/messages" render={props => {
+            if (this.props.user) {
+              return <MessagesList
+                {...props}
+                {...this.props}
+              />
+            } else {
+              return <Redirect to="login"/>
+            }
           }}
         />
 
@@ -53,20 +61,20 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show the user's tasks
           }}
         />
-      {/* EVENTS */}
+        {/* EVENTS */}
         <Route exact path="/events" render={props => {
-            return <EventsList {...props}/>
-          }}
+          return <EventsList {...props} />
+        }}
         />
         <Route path="/events/new" render={props => {
-            return <EventForm {...props}/>
-        }} 
+          return <EventForm {...props} />
+        }}
         />
         {/* <Route path="/login" render={Login} /> */}
         <Route exact path="/register" render={props => {
           return <Registration {...this.props}{...props} />
         }} />
-        
+
 
       </React.Fragment>
     );
