@@ -10,6 +10,7 @@ import MessagesList from "./messages/MessagesList";
 export default class ApplicationViews extends Component {
 
   render() {
+    console.log("applicationviews", this.props)
     return (
       <React.Fragment>
 
@@ -44,7 +45,10 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/messages" render={props => {
             if (this.props.user) {
-              return <MessagesList {...props} />
+              return <MessagesList
+                {...props}
+                {...this.props}
+              />
             } else {
               return <Redirect to="login"/>
             }

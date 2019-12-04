@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
 import "./Nutshell.css";
+import ApiManager from "./modules/ApiManager";
 
 class Nutshell extends Component {
   // user doesn't exist by default
@@ -13,22 +14,14 @@ class Nutshell extends Component {
   //returns true/false
   isAuthenticated = () => localStorage.getItem("credentials") !== null
 
-  setUser = (authObj) => {
-    /*
-      For now, just store the email and password that
-      the customer enters into local storage.
-    */
-    localStorage.setItem(
-      "credentials",
-      JSON.stringify(authObj)
-      )
-      console.log(authObj)
+  setUser = (results) => {
+    localStorage.setItem("credentials", results[0].id)
     this.setState({
       user: this.isAuthenticated()
     });
   }
 
-    clearUser = () =>  {
+  clearUser = () =>  {
     localStorage.removeItem("credentials")
     this.setState({user: this.isAuthenticated()})
   }
