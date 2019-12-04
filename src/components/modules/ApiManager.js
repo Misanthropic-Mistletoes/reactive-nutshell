@@ -35,6 +35,15 @@ export default {
             body: JSON.stringify(newEvent)
         }).then(data => data.json())
     },
+    update(tableName, editedObject) {
+        return fetch(`${remoteURL}/${tableName}/${editedObject.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedObject)
+        }).then(data => data.json());
+    },
     getLoggedInUser(email) {
         return fetch(`${remoteURL}/users?email=${email}`)
             .then(response => response.json())
