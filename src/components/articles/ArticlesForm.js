@@ -28,6 +28,7 @@ class ArticlesForm extends Component {
             const article = {
                 title: this.state.articleTitle,
                 synopsis: this.state.synopsis,
+                url: this.state.url,
             };
 
             // Create the article and redirect user to article list
@@ -43,6 +44,7 @@ class ArticlesForm extends Component {
             <form>
                 <fieldset>
                     <div className="formgrid">
+                        <label htmlFor="articleTitle">Name</label>
                         <input
                         type="text"
                         required
@@ -50,7 +52,7 @@ class ArticlesForm extends Component {
                         id="articleTitle"
                         placeholder="Article Title"
                         />
-                        <label htmlFor="articleTitle">Name</label>
+                        <label htmlFor="synopsis">Synopsis</label>
                         <input
                         type="text"
                         required
@@ -58,7 +60,7 @@ class ArticlesForm extends Component {
                         id="synopsis"
                         placeholder="synopsis"
                         />
-                        <label htmlFor="synopsis">Synopsis</label>
+                        <label htmlFor="url">URL</label>
                         <input
                         type="text"
                         required
@@ -66,7 +68,6 @@ class ArticlesForm extends Component {
                         id="url"
                         placeholder="URL"
                         />
-                        <label htmlFor="url">URL</label>
                     </div>
                     <div className="alignRight">
                         <button
