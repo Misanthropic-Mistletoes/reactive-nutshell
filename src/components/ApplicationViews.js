@@ -8,6 +8,7 @@ import ArticlesList from "./articles/ArticlesList";
 import Registration from "./auth/RegisterAccount";
 import TasksList from "./tasks/TasksList"
 import TaskForm from './tasks/TaskForm';
+import TaskEditForm from "./tasks/TaskEditForm";
 // import ArticlesEditForm from "./articles/ArticlesEditForm";
 import Home from "./home/Home";
 import MessagesList from "./messages/MessagesList";
@@ -77,6 +78,11 @@ export default class ApplicationViews extends Component {
           return <TaskForm {...props} />
         }}
         />
+        <Route
+          path="/tasks/:taskId(\d+)/edit" render={props => {
+            return <TaskEditForm {...props} />
+          }}
+          />
 
 
         <Route
