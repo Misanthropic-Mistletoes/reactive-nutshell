@@ -1,22 +1,25 @@
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import Login from "./auth/Login";
 import EventsList from "./events/EventsList";
 import EventForm from "./events/EventForm";
 import Registration from "./auth/RegisterAccount";
 import Home from "./home/Home";
+import MessagesList from "./messages/MessagesList";
+
 
 export default class ApplicationViews extends Component {
 
   render() {
+    console.log("applicationviews", this.props)
     return (
       <React.Fragment>
         <Route exact path="/" render={(props) => {
           return <Home {...props} />
         }} />
         <Route
-          path="/login" render={props => {
-            return <Login setUser={this.props.setUser}
+          exact path="/login" render={props => {
+            return <Login
               {...props}
               {...this.props}
             />
@@ -37,9 +40,15 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/messages" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
+          exact path="/messages" render={props => {
+            if (this.props.user) {
+              return <MessagesList
+                {...props}
+                {...this.props}
+              />
+            } else {
+              return <Redirect to="login"/>
+            }
           }}
         />
         <Route
@@ -64,6 +73,11 @@ export default class ApplicationViews extends Component {
           return <EventForm {...props} />
         }}
         />
+        <Route exact path="/register" render={props => {
+          return <Registration {...this.props}{...props} />
+        }} />
+
+
       </React.Fragment>
     );
   }

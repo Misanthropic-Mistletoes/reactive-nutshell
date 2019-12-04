@@ -23,8 +23,13 @@ class Login extends Component {
     ApiManager.checkUser(this.state.email, this.state.password)
     .then(results=>{
         if(results.length>0) {
+<<<<<<< HEAD
             localStorage.setItem("credentials", results[0].id)
             this.props.history.push("/events")
+=======
+            this.props.setUser(results)
+            this.props.history.push("/events");
+>>>>>>> master
         } else {
             alert("Incorrect username, email, or password")
         } 

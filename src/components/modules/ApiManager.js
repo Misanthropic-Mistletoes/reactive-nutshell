@@ -13,6 +13,11 @@ export default {
     getAll(tableName) {
         return fetch(`${remoteURL}/${tableName}`).then(result => result.json())
     },
+    // This fetch call uses _expand to get all objects including the name associated with the userId.
+    getAllWithUserNames(tableName) {
+        return fetch(`${remoteURL}/${tableName}?_expand=user`).then(result => result.json())
+    },
+
     delete(tableName, id) {
         // This fetch call grabs the id of a single object and deletes it from tableName. 
         return fetch(`${remoteURL}/${tableName}/${id}`, {
@@ -29,6 +34,15 @@ export default {
             },
             body: JSON.stringify(newEvent)
         }).then(data => data.json())
+    },
+    update(tableName, editedObject) {
+        return fetch(`${remoteURL}/${tableName}/${editedObject.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedObject)
+        }).then(data => data.json());
     },
     // BELOW FETCH CALLS ARE FOR AUTHENTICATION
     getLoggedInUser(email) {
