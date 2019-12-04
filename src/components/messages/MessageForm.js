@@ -27,10 +27,17 @@ class MessageForm extends Component {
         this.setState(stateToChange);
     };
     
+
+    refreshPage() {
+        window.location.reload(false);
+    }
+
+
     constructNewMessage = evt => {
         const userId = localStorage.getItem("credentials")
         const d = Date(Date.now());
         const dateTime = d.toString()
+
         evt.preventDefault();
         if (this.state.message === "") {
                 window.alert("Please input a message")
@@ -46,6 +53,7 @@ class MessageForm extends Component {
 
                 ApiManager.post("messages", message)
                 .then(() => this.props.history.push("/messages"));
+                //^ reload Messages list after post request is done
             }
     };
 

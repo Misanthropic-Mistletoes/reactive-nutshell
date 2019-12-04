@@ -51,7 +51,7 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/messages/new" render={props => {
+          exact path="/messages/new" render={props => {
           return <MessageForm {...props} />
         }}
         />
