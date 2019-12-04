@@ -25,13 +25,6 @@ export default class ApplicationViews extends Component {
             />
           }}
         />
-        <Route path="/register" render={props => {
-          return <Registration setUser={this.props.setUser}
-            {...this.props}
-            {...props}
-          />
-        }} />
-
         <Route
           path="/friends" render={props => {
             return null
