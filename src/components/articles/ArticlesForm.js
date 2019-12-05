@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArticlesAPIManager from './ArticlesAPIManager';
+import ApiManager from '../modules/ApiManager';
 // import './ArticleForm.css'
 
 class ArticlesForm extends Component {
@@ -32,7 +32,7 @@ class ArticlesForm extends Component {
             };
 
             // Create the article and redirect user to article list
-            ArticlesAPIManager.post(article)
+           return ApiManager.post("articles", article)
             .then(() => this.props.history.push("/articles"));
         }
     };
