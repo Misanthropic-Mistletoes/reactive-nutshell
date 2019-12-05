@@ -25,6 +25,7 @@ class TaskForm extends Component {
             const task = {
                 name: this.state.taskName,
                 dueDate: this.state.dueDate,
+                completed: false,
                 userId: Number(userId)
             }
             // Create the task and redirect user to task list

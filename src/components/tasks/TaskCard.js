@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
+import ApiManager from '../modules/ApiManager';
 
 class TaskCard extends Component {
+    
+    updateTaskStatus = evt => {
+      const editedTaskId = this.props.task.id
+      evt.preventDefault()
+      const editedTask = {
+        completed: evt.target.checked,
+        id: editedTaskId
+      };
+      console.log("editedTaskId", editedTaskId)
+      
+      ApiManager.patch("tasks", editedTask)   
+      .then(this.props.getAllTasks)
+    }
+
   render() {
     return (
         <div className="taskCard">
@@ -10,7 +25,7 @@ class TaskCard extends Component {
           <button type="button" onClick={() => this.props.deleteTask(this.props.task.id)}>Delete</button>
           <button type="button" onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}>Edit</button>
           <label htmlFor="taskComplete">Task Complete:</label>
-          <input type="checkbox" name="taskComplete" onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}/>
+          <input type="checkbox" name="taskComplete" checked={this.props.task.completed} onChange={this.updateTaskStatus}/>
           <hr />
         </div>
       </div>

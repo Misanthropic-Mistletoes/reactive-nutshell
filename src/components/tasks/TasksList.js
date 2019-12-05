@@ -18,6 +18,15 @@ class TasksList extends Component {
                 })
             })
     }
+
+    getAllTasks= () => {
+    ApiManager.getAll("tasks")
+    .then((tasks) => {
+        this.setState({
+            tasks: tasks
+        })
+    })}
+
     deleteTask= id => {
         // handles deleting a single article from articles array and renders updated array to the DOM
         ApiManager.delete("tasks", id)
@@ -29,11 +38,6 @@ class TasksList extends Component {
                         })
                     })
             })
-    }
-     handleInputChange(complete) {
-        const target = complete.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
     }
     
     render() {
@@ -55,6 +59,7 @@ class TasksList extends Component {
                         key={task.id}
                         task={task}
                         deleteTask={this.deleteTask}
+                        getAllTasks={this.getAllTasks}
                         {...this.props}
                         />
                     )}
