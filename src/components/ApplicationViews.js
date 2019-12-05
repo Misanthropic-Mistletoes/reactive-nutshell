@@ -15,6 +15,7 @@ import MessagesList from "./messages/MessagesList";
 import MessageForm from "./messages/MessageForm";
 import MessageEditForm from "./messages/MessageEditForm";
 import EventEditForm from "./events/EventEditForm";
+import ArticlesEditForm from "./articles/ArticlesEditForm";
 import FriendsList from "./friends/FriendsList";
 
 export default class ApplicationViews extends Component {
@@ -100,12 +101,23 @@ export default class ApplicationViews extends Component {
           }}
         />
         {/* ARTICLES */}
-        <Route exact path="/articles" render={props => {
-          return <ArticlesList {...props} />
+        <Route 
+          exact path="/articles" render={props => {
+            return <ArticlesList 
+            {...props} />
         }}
         />
+
         <Route path="/articles/new" render={props => {
-          return <ArticlesForm {...props} />
+          return <ArticlesForm 
+          {...props} />
+        }}
+        />
+
+        <Route
+          path="/articles/:articleId(\d+)/edit" render={props => {
+            return <ArticlesEditForm 
+            {...props} />
         }}
         />
         {/* EVENTS */}

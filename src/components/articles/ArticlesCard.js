@@ -26,4 +26,4 @@ class ArticleCard extends Component {
   }
 }
 
-export default ArticleCard;
+export default ArticleCard; 
