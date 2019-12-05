@@ -1,65 +1,100 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "username": "Jisie Rocks", 
-            "email": "jisie@rocks.com"
-        },
-        {
-            "id": 2,
-            "username": "Rose Rocks", 
-            "email": "Rose@rocks.com"
-        },
-            "id": 3,
-            "username": "Kristin Rocks",
-            "email": "Kristin@rocks.com"
-    ],
-    "articles": [
-        {
-            "id": 1,
-            "title": "Don't leave your laptop at home.",
-            "synopsis": "Or you will be screwed.",
-            "url": "http://url.com",
-            "userId": 1,
-            "timestamp": "(timestamp info goes here)"
-        }
-    ],
-    "messages": [
-        {
-            "id": 1,
-            "userId": 1,
-            "message": "Hey, how is it going?",
-            "timestamp": "(timestamp info goes here)" 
-        }
-    ],
-    "events": [
-        {
-            "id": 1,
-            "title": "NSS Hackathon",
-            "dateTime": "dateTime into goes here",
-            "location": "Nashville Software School",
-            "userId": 1
-        }
-    ],
-    "tasks": [
-        {
-            "id": 1, 
-            "name": "Walk the dog.",
-            "dueDate": "December 2, 2019",
-            "completed": false,
-            "userId": 1
-        }
-    ],
-    "friends": [
-        {
-            "id": 1,
-            "userId": 2,
-            "loggedInUserId": 1 
-        },
-        {
-            "id": 2,
-            "userId": 3,
-            "loggedInUserId": 1
-        }
-    ]
-  }
+  "users": [
+    {
+      "id": 1,
+      "name": "Jisie",
+      "email": "jisie@rocks.com",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "name": "Rose",
+      "email": "Rose@rocks.com",
+      "password": "123"
+    },
+    {
+      "name": "Kristen",
+      "email": "kristen@rocks.com",
+      "password": "ada",
+      "id": 3
+    }
+  ],
+  "articles": [
+    {
+      "id": 4,
+      "title": "Happy Little Trees Planted at NSS!!!",
+      "synopsis": "Bob Ross visits Nashville Software School and plants happy little trees",
+      "url": "www.bobross.com",
+      "timestamp": "Thu Dec 05 2019 11:55:48 GMT-0600 (Central Standard Time)"
+    }
+  ],
+  "messages": [
+    {
+      "userId": 1,
+      "id": 1,
+      "message": "Hey, how is it going :D",
+      "timestamp": "Wed Dec 04 2019 11:13:24 GMT-0600 (Central Standard Time)"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "message": "It's a brand new day to sl@y, kweeen!",
+      "timestamp": "Wed Dec 04 2019 11:26:31 GMT-0600 (Central Standard Time)"
+    },
+    {
+      "userId": 3,
+      "id": 3,
+      "message": "I'm tired today. Anyone wanna go to Starbucks with me?",
+      "timestamp": "Wed Dec 04 2019 11:26:31 GMT-0600 (Central Standard Time)"
+    }
+  ],
+  "events": [
+    {
+      "title": "Pool Party",
+      "location": "Bito's House",
+      "date": "2019-12-04",
+      "id": 1,
+      "userId": 1
+    },
+    {
+      "title": "Holiday Party",
+      "location": "Jisie's House",
+      "date": "2019-12-20",
+      "id": 3,
+      "userId": 1
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "userId": 1,
+      "name": "Walk The Piranha",
+      "dueDate": "2019-12-18",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "name": "Bathe My Dog",
+      "dueDate": "2019-12-18",
+      "completed": false
+    }
+  ],
+  "friends": [
+    {
+      "id": 1,
+      "userId": 2,
+      "loggedInUserId": 1
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "loggedInUserId": 1
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "loggedInUserId": 3
+    }
+  ]
+}
