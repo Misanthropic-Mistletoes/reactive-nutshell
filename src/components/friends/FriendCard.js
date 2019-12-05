@@ -8,7 +8,6 @@ import React, { Component } from 'react'
 
 class FriendCard extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className="friendCard">
         <div className="friendCard-content">

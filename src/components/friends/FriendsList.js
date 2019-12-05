@@ -47,9 +47,8 @@ class FriendsList extends Component {
     // }
 
     render() {
-        console.log(this.state.friends)
         const activeUser = localStorage.getItem("credentials")
-        console.log(activeUser)
+        
         return (
             <>
                 <h1>Friends</h1>

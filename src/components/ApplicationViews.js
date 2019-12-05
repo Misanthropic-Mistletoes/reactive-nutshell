@@ -1,23 +1,26 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+// *****************  HOME  ***********************
+import Home from "./home/Home";
 import Login from "./auth/Login";
-import EventsList from "./events/EventsList";
-import EventForm from "./events/EventForm";
-import ArticlesForm from "./articles/ArticlesForm";
-import ArticlesList from "./articles/ArticlesList";
 import Registration from "./auth/RegisterAccount";
-import TasksList from "./tasks/TasksList"
+// *****************  FORM  ***********************
+import ArticlesForm from "./articles/ArticlesForm";
+import EventForm from "./events/EventForm";
+import MessageForm from "./messages/MessageForm";
 import TaskForm from './tasks/TaskForm';
+// *****************  LIST  ***********************
+import ArticlesList from "./articles/ArticlesList";
+import EventsList from "./events/EventsList";
+import MessagesList from "./messages/MessagesList";
+import TasksList from "./tasks/TasksList"
+import FriendsList from "./friends/FriendsList";
+// *****************  EDIT  ***********************
+import ArticlesEditForm from "./articles/ArticlesEditForm";
+import EventEditForm from "./events/EventEditForm";
+import MessageEditForm from "./messages/MessageEditForm";
 import TaskEditForm from "./tasks/TaskEditForm";
 // import ArticlesEditForm from "./articles/ArticlesEditForm";
-import Home from "./home/Home";
-import MessagesList from "./messages/MessagesList";
-import MessageForm from "./messages/MessageForm";
-import MessageEditForm from "./messages/MessageEditForm";
-import EventEditForm from "./events/EventEditForm";
-import ArticlesEditForm from "./articles/ArticlesEditForm";
-import FriendsList from "./friends/FriendsList";
-
 export default class ApplicationViews extends Component {
 
   render() {

@@ -10,7 +10,6 @@ class TaskCard extends Component {
         completed: evt.target.checked,
         id: editedTaskId
       };
-      console.log("editedTaskId", editedTaskId)
       
       ApiManager.patch("tasks", editedTask)   
       .then(this.props.getAllTasks)
