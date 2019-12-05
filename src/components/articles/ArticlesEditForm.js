@@ -10,6 +10,7 @@ class ArticlesEditForm extends Component {
       articleTitle: "",
       synopsis: "",
       url: "",
+      timestamp:"",
       loadingStatus: true,
     };
 
@@ -26,21 +27,23 @@ class ArticlesEditForm extends Component {
         id: this.props.match.params.articleId,
         title: this.state.articleTitle,
         synopsis: this.state.synopsis,
-        url: this.state.url
+        url: this.state.url,
+        timestamp: this.state.timestamp
       };
-
+      
       ApiManager.update("articles", editedArticle)
       .then(() => this.props.history.push("/articles"))
     };
-
+    
     componentDidMount() {
       ApiManager.get("articles", this.props.match.params.articleId)
       .then(article => {
-          this.setState({
-            articleTitle: article.title,
-            synopsis: article.synopsis,
-            url: article.url,
-            loadingStatus: false,
+        this.setState({
+          articleTitle: article.title,
+          synopsis: article.synopsis,
+          url: article.url,
+          loadingStatus: false,
+          timestamp: article.timestamp
           });
       });
     };
