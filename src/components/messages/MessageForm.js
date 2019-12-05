@@ -38,7 +38,7 @@ class MessageForm extends Component {
                 //disable the button while the Post request is running:
                 this.setState({ loadingStatus: true });
                 const message = {
-                    userId: userId,
+                    userId: Number(userId),
                     message: this.state.message,
                     timestamp: dateTime
                 }
