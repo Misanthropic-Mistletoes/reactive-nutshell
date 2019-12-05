@@ -9,7 +9,10 @@
             "id": 2,
             "username": "Rose Rocks", 
             "email": "Rose@rocks.com"
-        }
+        },
+            "id": 3,
+            "username": "Kristin Rocks",
+            "email": "Kristin@rocks.com"
     ],
     "articles": [
         {
@@ -50,8 +53,13 @@
     "friends": [
         {
             "id": 1,
-            "userId": [],
+            "userId": 2,
             "loggedInUserId": 1 
+        },
+        {
+            "id": 2,
+            "userId": 3,
+            "loggedInUserId": 1
         }
     ]
   }
