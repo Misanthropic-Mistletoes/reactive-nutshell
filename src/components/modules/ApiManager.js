@@ -36,6 +36,15 @@ export default {
             body: JSON.stringify(newEvent)
         }).then(data => data.json())
     },
+    patch(tableName, editedObject) {
+        return fetch(`${remoteURL}/${tableName}/${editedObject.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedObject)
+        }).then(data => data.json())
+    },
     // This fetch call is for EDITING a single object, grabs object data from API via id
     update(tableName, editedObject) {
         return fetch(`${remoteURL}/${tableName}/${editedObject.id}`, {

@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import ApiManager from '../modules/ApiManager';
 
 class TaskCard extends Component {
-  state = {
-    checked: false
-  };
-// This will change the state of 'checked' when user checks box
-  onChange = (event) => {
-    console.log("event", event.target.checked)
-    this.setState(
-      {checked: event.target.checked}
-    );
-  }
+    
+    updateTaskStatus = evt => {
+      const editedTaskId = this.props.task.id
+      evt.preventDefault()
+      const editedTask = {
+        completed: evt.target.checked,
+        id: editedTaskId
+      };
+      console.log("editedTaskId", editedTaskId)
+      
+      ApiManager.patch("tasks", editedTask)   
+      .then(this.props.getAllTasks)
+    }
 
   render() {
     return (
@@ -21,7 +25,7 @@ class TaskCard extends Component {
           <button type="button" onClick={() => this.props.deleteTask(this.props.task.id)}>Delete</button>
           <button type="button" onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}>Edit</button>
           <label htmlFor="taskComplete">Task Complete:</label>
-          <input type="checkbox" name="taskComplete" onChange={this.onChange}/>
+          <input type="checkbox" name="taskComplete" checked={this.props.task.completed} onChange={this.updateTaskStatus}/>
           <hr />
         </div>
       </div>

@@ -38,9 +38,6 @@ class TaskEditForm extends Component {
           loadingStatus: false,
         });
       });
-
-    // ApiManager.getAll("tasks")
-    // .then(tasks => this.setState({tasks: tasks}))
   }
 
     render() {
