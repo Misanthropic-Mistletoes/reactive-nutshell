@@ -6,10 +6,14 @@ class Home extends Component {
     render() {
         return (
             <>
+            <div id="homeBackground" >
+            </div>
+            <div>
                 <h1 id="welcomeHomePageHeader">Welcome to Nutshell</h1>
                 <div id="loginButton">
                 <Link to={`/login`}><button className="btn btn-primary" >Login</button></Link>
                 </div>
+            </div>
             </>
         )
     }
