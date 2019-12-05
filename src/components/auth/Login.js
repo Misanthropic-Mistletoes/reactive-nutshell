@@ -24,7 +24,7 @@ class Login extends Component {
     .then(results=>{
         if(results.length>0) {
             this.props.setUser(results)
-            this.props.history.push("/events");
+            this.props.history.push("/");
         } else {
             alert("Incorrect username, email, or password")
         } 
@@ -51,13 +51,6 @@ class Login extends Component {
                                     id="password"
                                     placeholder="Password"
                                     required="" />
-
-                                <label htmlFor="inputConfirmPassword">Confirm Password: </label>
-                                <input className="inputs" onChange={this.handleFieldChange} type="password"
-                                    id="confirmPassword"
-                                    placeholder="Confirm Password"
-                                    required="" />
-
                             </div>
                             <button type="submit">
                                 Sign in

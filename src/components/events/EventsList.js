@@ -7,7 +7,6 @@ import './EventsStyles/EventsList.css';
 import ApiManager from '../modules/ApiManager';
 
 const userId = localStorage.getItem("credentials")
-console.log(userId)
 
 class EventsList extends Component {
     // defines what this component needs to render
