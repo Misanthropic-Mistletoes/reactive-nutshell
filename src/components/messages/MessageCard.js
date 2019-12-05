@@ -10,7 +10,7 @@ class MessageCard extends Component {
                     <p>{this.props.message}</p>
                     <p>{this.props.timestamp}</p>
                 </div>
-                {userId === this.props.userId ? 
+                {Number(userId) === this.props.userId ? 
                 <>
                 <button type="button" className="btn btn-primary" onClick={() => {this.props.history.push(`/messages/${this.props.id}/edit`)}}>Edit</button>
                 <button type="button" className="btn btn-primary" onClick={() => this.props.deleteMessage(this.props.id)}>Delete</button>
