@@ -5,6 +5,7 @@ class MessageEditForm extends Component {
     //set the initial state
     state = {
         message: "",
+        timestamp: "",
         loadingStatus: true
     };
 
@@ -14,16 +15,34 @@ class MessageEditForm extends Component {
         this.setState(stateToChange)
     };
 
-    updateExistingOwner = evt => {
+    editMessage = evt => {
+        const userId = localStorage.getItem("credentials")
         evt.preventDefault()
         this.setState({ loadingStatus: true })
         const editedMessage = {
-            id: this.props.match.params.id,
-            message: this.state.message
+            userId: userId,
+            id: this.props.match.params.messageId,
+            message: this.state.message,
+            timestamp: this.state.timestamp
         }
+
+        ApiManager.update("messages", editedMessage)
+            .then(() => this.props.history.push("/messages"))
+    }
+
+    componentDidMount() {
+        ApiManager.get("messages", this.props.match.params.messageId)
+        .then(message => {
+            this.setState({
+                message: message.message,
+                timestamp: message.timestamp,
+                loadingStatus: false
+            })
+        })
     }
 
     render() {
+        console.log("editform props", this.props)
         return (
             <React.Fragment>
                 <form>
@@ -41,7 +60,7 @@ class MessageEditForm extends Component {
                         <div>
                         <button
                                 type="button" disabled={this.state.loadingStatus}
-                                onClick={this.updateExistingOwner}
+                                onClick={this.editMessage}
                                 className="btn btn-primary"
                             >Submit</button>
                         </div>
@@ -52,3 +71,5 @@ class MessageEditForm extends Component {
     }
 
 }
+
+export default MessageEditForm

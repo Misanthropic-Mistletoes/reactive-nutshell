@@ -72,6 +72,7 @@ class MessageForm extends Component {
                     <div>
                         <button
                             type="button"
+                            className="btn btn-primary"
                             disabled={this.state.loadingStatus}
                             onClick={this.constructNewMessage}
                         >Submit</button>
