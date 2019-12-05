@@ -13,6 +13,7 @@ import TaskEditForm from "./tasks/TaskEditForm";
 import Home from "./home/Home";
 import MessagesList from "./messages/MessagesList";
 import MessageForm from "./messages/MessageForm";
+import MessageEditForm from "./messages/MessageEditForm";
 import EventEditForm from "./events/EventEditForm";
 import FriendsList from "./friends/FriendsList";
 
@@ -53,7 +54,7 @@ export default class ApplicationViews extends Component {
         />
         {/* MESSAGES */}
         <Route
-          path="/messages" render={props => {
+          exact path="/messages" render={props => {
             if (this.props.user) {
               return <MessagesList
                 {...props}
@@ -65,10 +66,15 @@ export default class ApplicationViews extends Component {
           }}
         />
         <Route
-          exact path="/messages/new" render={props => {
+          path="/messages/new" render={props => {
             return <MessageForm {...props} />
           }}
         />
+
+        <Route
+          exact path="/messages/:messageId(\d+)/edit" render={props => {
+            return <MessageEditForm {...props} />
+          }} />
         {/* TASKS */}
         <Route
           exact path="/tasks" render={props => {

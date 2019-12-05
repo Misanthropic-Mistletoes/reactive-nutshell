@@ -28,7 +28,6 @@ class MessagesList extends Component {
                 this.setState({
                     messages: messagesArray
                 })
-                console.log(messagesArray)
             })
     }
 
@@ -45,7 +44,6 @@ class MessagesList extends Component {
     }
 
     render() {
-        console.log("this.state", this.state)
         return (
             <React.Fragment>
                 <div className="container-cards">
@@ -55,6 +53,7 @@ class MessagesList extends Component {
                             username={message.user.name}
                             message={message.message}
                             timestamp={message.timestamp}
+                            userId={message.userId}
                             deleteMessage={this.deleteMessage}
                             id={message.id}
                             {...this.props}
