@@ -27,7 +27,6 @@ class EventEditForm extends Component {
         const userId = localStorage.getItem("credentials")
         evt.preventDefault()
         this.setState({ loadingStatus: true });
-        // grabs current key values and puts them onto the form
         const editedEvent = {
           userId: Number(userId),
           id: this.props.match.params.eventId,
@@ -46,10 +45,11 @@ class EventEditForm extends Component {
         ApiManager.get("events", this.props.match.params.eventId)
         .then(event => {
             console.log(event)
+            // grabs current key values and puts them onto the form
             this.setState({
               title: event.title,
               location: event.location,
-              date: this.state.date,
+              date: event.date,
               loadingStatus: false
             });
         });
