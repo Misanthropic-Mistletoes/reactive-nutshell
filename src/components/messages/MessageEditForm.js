@@ -20,7 +20,7 @@ class MessageEditForm extends Component {
         evt.preventDefault()
         this.setState({ loadingStatus: true })
         const editedMessage = {
-            userId: userId,
+            userId: Number(userId),
             id: this.props.match.params.messageId,
             message: this.state.message,
             timestamp: this.state.timestamp
