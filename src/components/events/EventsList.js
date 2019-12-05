@@ -6,6 +6,8 @@ import EventCard from './EventCard'
 import './EventsStyles/EventsList.css';
 import ApiManager from '../modules/ApiManager';
 
+const userId = localStorage.getItem("credentials")
+console.log(userId)
 
 class EventsList extends Component {
     // defines what this component needs to render
@@ -15,7 +17,7 @@ class EventsList extends Component {
 
     componentDidMount() {
         //getAll from ApiManager, hangs on to that data, and puts it into state
-        ApiManager.getAll("events")
+        ApiManager.getAllforLoggedInUser(userId, "events")
             .then((events) => {
                 events.sort((a,b) => new Date(...a.date.split('/').reverse()) - new Date(...b.date.split('/').reverse()));
                 this.setState({
@@ -28,7 +30,7 @@ class EventsList extends Component {
         // handles deleting a single event from events array and renders updated array to the DOM
         ApiManager.delete("events", id)
             .then(() => {
-                ApiManager.getAll("events")
+                ApiManager.getAllforLoggedInUser(userId, "events")
                     .then((updatedEventsList) => {
                         updatedEventsList.sort((a,b) => new Date(...a.date.split('/').reverse()) - new Date(...b.date.split('/').reverse()))
                         this.setState({

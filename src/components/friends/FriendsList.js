@@ -16,12 +16,22 @@ class FriendsList extends Component {
     componentDidMount() {
         //getAll from ApiManager, hangs on to that data, and puts it into state
         ApiManager.getAllWithUserNames("friends")
-            .then((friends) => {
+        .then((friends) => {
+            
+            
                 this.setState({
                     friends: friends
                 })
+                
+
             })
     }
+
+    // {userId === this.props.userId ? 
+    //     <>
+    //     <button type="button" className="btn btn-primary" onClick={() => {this.props.history.push(`/messages/${this.props.id}/edit`)}}>Edit</button>
+    //     <button type="button" className="btn btn-primary" onClick={() => this.props.deleteMessage(this.props.id)}>Delete</button>
+    //     </> : null }
     
     // deleteFriend = id => {
     //     // handles deleting a single event from events array and renders updated array to the DOM
@@ -38,6 +48,8 @@ class FriendsList extends Component {
 
     render() {
         console.log(this.state.friends)
+        const activeUser = localStorage.getItem("credentials")
+        console.log(activeUser)
         return (
             <>
                 <h1>Friends</h1>
@@ -51,6 +63,7 @@ class FriendsList extends Component {
                 </section>
                 <div className="friendsList">
                     {/* array method that maps over events array and renders a single card for each event */}
+                    
                     {this.state.friends.map(friend =>
                         <FriendCard
                             key={friend.id}
@@ -58,8 +71,8 @@ class FriendsList extends Component {
                             // deleteFriend={this.deleteFriend}
                             // The router props need to be passed through <EventsList> to <EventCard> component. Spread operator copies properties from a provided object onto a new object.
                             {...this.props}
-                        />
-                    )}
+                        />)}
+
                 </div>
             </>
         )

@@ -13,10 +13,12 @@ export default {
     getAll(tableName) {
         return fetch(`${remoteURL}/${tableName}`).then(result => result.json())
     },
-    
+    getAllforLoggedInUser(userId, tableName) {
+        return fetch(`${remoteURL}/users/${userId}/${tableName}`).then(result => result.json())
+    },
     // This fetch call uses _expand to get all objects including the name associated with the userId.
-    getAllWithUserNames(tableName) {
-        return fetch(`${remoteURL}/${tableName}?_expand=user`).then(result => result.json())
+    getAllWithUserNames(tableName, userId) {
+        return fetch(`${remoteURL}/${tableName}?_expand=user`).then(result => result.json(userId))
     },
 
     delete(tableName, id) {
@@ -56,10 +58,17 @@ export default {
         }).then(data => data.json());
     },
     // BELOW FETCH CALLS ARE FOR AUTHENTICATION
-    getLoggedInUser(email) {
-        return fetch(`${remoteURL}/users?email=${email}`)
-            .then(response => response.json())
-    },
+    // getLoggedInUser(userId) {
+    //     return fetch(`${remoteURL}/users/${userId}`)
+    //         .then(response => response.json())
+    // },
+    // getLoggedInUsersTableData(userId, tableName) {
+    //     return fetch(`${remoteURL}/users/${userId}&${tableName}?_expand=user`)
+    //         .then(response => response.json())
+    // },
+    // getAllWithUserNames(tableName) {
+    //     return fetch(`${remoteURL}/${tableName}?_expand=user`).then(result => result.json())
+    // },
     getUserData() {
         return fetch(`${remoteURL}/users`)
             .then(response => response.json())

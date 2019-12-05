@@ -19,6 +19,7 @@ class EventForm extends Component {
 
     // function that constructs a new event and sets state 
     constructNewEvent = evt => {
+        const userId = localStorage.getItem("credentials")
         evt.preventDefault();
         if (this.state.title === "" || this.state.location === ""
             // || this.state.dateTime === ""
@@ -29,7 +30,8 @@ class EventForm extends Component {
             const event = {
                 title: this.state.title,
                 location: this.state.location,
-                date: this.state.date
+                date: this.state.date,
+                userId: Number(userId)
             }
             return ApiManager.post("events", event)
                 .then(() => this.props.history.push('/events'));

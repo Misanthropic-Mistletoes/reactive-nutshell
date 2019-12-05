@@ -21,9 +21,11 @@ class ArticlesEditForm extends Component {
     };
 
     updateExistingArticle = evt => {
+      const userId = localStorage.getItem("credentials")
       evt.preventDefault()
       this.setState({ loadingStatus: true });
       const editedArticle = {
+        userId: Number(userId),
         id: this.props.match.params.articleId,
         title: this.state.articleTitle,
         synopsis: this.state.synopsis,
