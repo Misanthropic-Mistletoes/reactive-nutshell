@@ -16,6 +16,7 @@ class TaskForm extends Component {
     /*  Local method for validation, set loadingStatus, create task      object, invoke the TaskManager post method, and redirect to the full task list
     */
     constructNewTask = evt => {
+        const userId = localStorage.getItem("credentials")
         evt.preventDefault();
         if (this.state.taskName === "" || this.state.dueDate === "") {
             window.alert("Please input a F***ing Due Date!");
@@ -24,6 +25,7 @@ class TaskForm extends Component {
             const task = {
                 name: this.state.taskName,
                 dueDate: this.state.dueDate,
+                userId: Number(userId)
             }
             // Create the task and redirect user to task list
             

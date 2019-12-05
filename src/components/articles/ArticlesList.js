@@ -3,8 +3,8 @@
 
 import React, { Component } from 'react'
 import ArticleCard from './ArticlesCard'
-import ArticlesAPIManager from './ArticlesAPIManager'
 import './ArticlesStyles/ArticlesList.css';
+import ApiManager from '../modules/ApiManager';
 
 class ArticlesList extends Component {
     // defines what this component needs to render
@@ -13,8 +13,8 @@ class ArticlesList extends Component {
     }
 
     componentDidMount() {
-        //getAll from ArticlesAPIManager, hangs on to that data, and puts it into state
-        ArticlesAPIManager.getAll()
+        //getAll from ApiManager, hangs on to that data, and puts it into state
+        ApiManager.getAll("articles")
             .then((articles) => {
                 this.setState({
                     articles: articles
@@ -24,9 +24,9 @@ class ArticlesList extends Component {
 
     deleteArticle = id => {
         // handles deleting a single article from articles array and renders updated array to the DOM
-        ArticlesAPIManager.delete(id)
+        ApiManager.delete("articles", id)
             .then(() => {
-                ArticlesAPIManager.getAll()
+                ApiManager.getAll("articles")
                     .then((updatedArticlesList) => {
                         this.setState({
                             articles: updatedArticlesList
@@ -54,6 +54,7 @@ class ArticlesList extends Component {
                         key={article.id}
                         article={article}
                         deleteArticle={this.deleteArticle}
+                        {...this.props}
                         />
                     )}
                 </div>

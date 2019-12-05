@@ -27,7 +27,9 @@ class MessageForm extends Component {
 
 
     constructNewMessage = evt => {
+        //Retrieve UserId from localStorage and store in variable:
         const userId = localStorage.getItem("credentials")
+        // Convert the Date.now() milliseconds to a readable date and time:
         const d = Date(Date.now());
         const dateTime = d.toString()
 
@@ -38,11 +40,10 @@ class MessageForm extends Component {
                 //disable the button while the Post request is running:
                 this.setState({ loadingStatus: true });
                 const message = {
-                    userId: userId,
+                    userId: Number(userId),
                     message: this.state.message,
                     timestamp: dateTime
                 }
-                console.log("message", message)
 
                 ApiManager.post("messages", message)
                 .then(() => {

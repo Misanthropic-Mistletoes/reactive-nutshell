@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArticlesAPIManager from './ArticlesAPIManager';
+import ApiManager from '../modules/ApiManager';
 // import './ArticleForm.css'
 
 class ArticlesForm extends Component {
@@ -7,6 +7,7 @@ class ArticlesForm extends Component {
         articleTitle: "",
         synopsis: "",
         url:"",
+        timestamp: "",
         loadingStatus: false,
     };
 
@@ -20,19 +21,24 @@ class ArticlesForm extends Component {
     object, invoke the ArticlesAPIManager post method, and redirect to the full article list
     */
     constructNewArticle = evt => {
+        const userId = localStorage.getItem("credentials")
+        const d = Date(Date.now())
+        const dateTime = d.toString()
         evt.preventDefault();
         if (this.state.articleTitle === "" || this.state.synopsis === "") {
             window.alert("DON'T LEAVE ANYTHING BLANK!!");
         } else {
             this.setState({ loadingStatus: true });
             const article = {
+                userId: Number(userId),
                 title: this.state.articleTitle,
                 synopsis: this.state.synopsis,
                 url: this.state.url,
+                timestamp: dateTime,
             };
 
             // Create the article and redirect user to article list
-            ArticlesAPIManager.post(article)
+           return ApiManager.post("articles", article)
             .then(() => this.props.history.push("/articles"));
         }
     };
