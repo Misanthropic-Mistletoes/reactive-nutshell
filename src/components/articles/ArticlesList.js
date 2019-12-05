@@ -16,7 +16,6 @@ class ArticlesList extends Component {
         //getAll from ApiManager, hangs on to that data, and puts it into state
         ApiManager.getAll("articles")
             .then((articles) => {
-                articles.sort((a,b) => new Date(...a.date.split('/').reverse()) - new Date(...b.date.split('/').reverse()));
                 this.setState({
                     articles: articles
                 })
@@ -29,7 +28,6 @@ class ArticlesList extends Component {
             .then(() => {
                 ApiManager.getAll("articles")
                     .then((updatedArticlesList) => {
-                        updatedArticlesList.sort((a,b) => new Date(...a.date.split('/').reverse()) - new Date(...b.date.split('/').reverse()))
                         this.setState({
                             articles: updatedArticlesList
                         })

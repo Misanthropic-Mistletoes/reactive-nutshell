@@ -8,10 +8,12 @@ import ArticlesList from "./articles/ArticlesList";
 import Registration from "./auth/RegisterAccount";
 import TasksList from "./tasks/TasksList"
 import TaskForm from './tasks/TaskForm';
+import TaskEditForm from "./tasks/TaskEditForm";
 // import ArticlesEditForm from "./articles/ArticlesEditForm";
 import Home from "./home/Home";
 import MessagesList from "./messages/MessagesList";
 import MessageForm from "./messages/MessageForm";
+import MessageEditForm from "./messages/MessageEditForm";
 import EventEditForm from "./events/EventEditForm";
 import ArticlesEditForm from "./articles/ArticlesEditForm";
 
@@ -46,7 +48,7 @@ export default class ApplicationViews extends Component {
         />
         {/* MESSAGES */}
         <Route
-          path="/messages" render={props => {
+          exact path="/messages" render={props => {
             if (this.props.user) {
               return <MessagesList
                 {...props}
@@ -57,6 +59,17 @@ export default class ApplicationViews extends Component {
             }
           }}
         />
+
+        <Route
+          path="/messages/new" render={props => {
+            return <MessageForm {...props} />
+          }}
+        />
+
+        <Route
+          exact path="/messages/:messageId(\d+)/edit" render={props => {
+            return <MessageEditForm {...props} />
+          }} />
         {/* TASKS */}
         <Route
           exact path="/tasks" render={props => {
@@ -68,12 +81,12 @@ export default class ApplicationViews extends Component {
           return <TaskForm {...props} />
         }}
         />
-
         <Route
-          exact path="/messages/new" render={props => {
-            return <MessageForm {...props} />
+          path="/tasks/:taskId(\d+)/edit" render={props => {
+            return <TaskEditForm {...props} />
           }}
           />
+
 
         <Route
           path="/tasks" render={props => {

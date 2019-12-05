@@ -32,7 +32,7 @@ class ArticlesForm extends Component {
             };
 
             // Create the article and redirect user to article list
-            ApiManager.post(article)
+           return ApiManager.post("articles", article)
             .then(() => this.props.history.push("/articles"));
         }
     };

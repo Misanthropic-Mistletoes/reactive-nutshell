@@ -28,14 +28,13 @@ class MessagesList extends Component {
                 this.setState({
                     messages: messagesArray
                 })
-                console.log(messagesArray)
             })
     }
 
     deleteMessage = id => {
         ApiManager.delete("messages", id)
             .then(() => {
-                ApiManager.getAll("messages")
+                ApiManager.getAllWithUserNames("messages")
                     .then((newMessages) => {
                         this.setState({
                             messages: newMessages
@@ -54,7 +53,9 @@ class MessagesList extends Component {
                             username={message.user.name}
                             message={message.message}
                             timestamp={message.timestamp}
+                            userId={message.userId}
                             deleteMessage={this.deleteMessage}
+                            id={message.id}
                             {...this.props}
                         />
                     )}

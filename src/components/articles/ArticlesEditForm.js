@@ -1,23 +1,23 @@
 // Author: Julian Garcia
 
 import React, { Component } from "react"
-import APIManager from "../modules/ApiManager"
+import ApiManager from "../modules/ApiManager"
 // import "./ArticleForm.css"
 
 class ArticlesEditForm extends Component {
     //set the initial state
     state = {
-      title: "",
+      articleTitle: "",
       synopsis: "",
       url: "",
-      loadingStatus: false,
+      loadingStatus: true,
     };
 
     handleFieldChange = evt => {
       const stateToChange = {}
       stateToChange[evt.target.id] = evt.target.value
       this.setState(stateToChange)
-    }
+    };
 
     updateExistingArticle = evt => {
       evt.preventDefault()
@@ -25,15 +25,16 @@ class ArticlesEditForm extends Component {
       const editedArticle = {
         id: this.props.match.params.articleId,
         title: this.state.articleTitle,
-        synopsis: this.state.synopsis
+        synopsis: this.state.synopsis,
+        url: this.state.url
       };
 
-      APIManager.update(editedArticle)
+      ApiManager.update("articles", editedArticle)
       .then(() => this.props.history.push("/articles"))
-    }
+    };
 
     componentDidMount() {
-      APIManager.get(this.props.match.params.articleId)
+      ApiManager.get("articles", this.props.match.params.articleId)
       .then(article => {
           this.setState({
             articleTitle: article.title,
@@ -42,10 +43,9 @@ class ArticlesEditForm extends Component {
             loadingStatus: false,
           });
       });
-    }
+    };
 
     render() {
-      console.log(this.props)
       return (
         <>
         <form>
