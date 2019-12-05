@@ -28,7 +28,6 @@ class MessagesList extends Component {
                 this.setState({
                     messages: messagesArray
                 })
-                console.log(messagesArray)
             })
     }
 

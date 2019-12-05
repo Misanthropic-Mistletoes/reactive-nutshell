@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 
 class MessageCard extends Component {
     render() {
-        console.log("card this.props", this.props)
         const userId = localStorage.getItem("credentials")
         return (
             <div className="message-card">

@@ -42,7 +42,6 @@ class MessageEditForm extends Component {
     }
 
     render() {
-        console.log("editform props", this.props)
         return (
             <React.Fragment>
                 <form>
