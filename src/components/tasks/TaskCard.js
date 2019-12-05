@@ -9,12 +9,8 @@ class TaskCard extends Component {
           <p>Due Date: {this.props.task.dueDate}</p>
           <button type="button" onClick={() => this.props.deleteTask(this.props.task.id)}>Delete</button>
           <button type="button" onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}>Edit</button>
-          {/* <TaskCard
-            key={task.id}
-            task={task}
-            deleteTask={this.deleteTask}
-            {...this.props}
-            /> */}
+          <label htmlFor="taskComplete">Task Complete:</label>
+          <input type="checkbox" name="taskComplete" onClick={() => { this.props.history.push(`/tasks/${this.props.task.id}/edit`) }}/>
           <hr />
         </div>
       </div>
