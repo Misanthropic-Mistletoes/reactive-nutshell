@@ -44,7 +44,6 @@ class EventEditForm extends Component {
         // Data loads and setState() is invoked with new data (also set loadingStatus to false)
         ApiManager.get("events", this.props.match.params.eventId)
         .then(event => {
-            console.log(event)
             // grabs current key values and puts them onto the form
             this.setState({
               title: event.title,

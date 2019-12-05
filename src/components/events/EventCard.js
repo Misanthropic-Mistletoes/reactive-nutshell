@@ -8,7 +8,6 @@ import './EventsStyles/EventsList.css';
 
 class EventCard extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className="eventCard">
         <div className="card-content">
