@@ -1,4 +1,22 @@
-img {
+body {
+background: url('./squirrel.jpg') center top no-repeat;
+}
+
+#welcomeHomePageHeader {
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#loginButton {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* img {
   max-width:50%;
   max-height:50%;
-}
+} */
+

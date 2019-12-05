@@ -6,9 +6,10 @@ class Home extends Component {
     render() {
         return (
             <>
-                <h1>Welcome to Nutshell</h1>
-                <img src={require('./squirrel.jpg')} alt="Squirrel" />
-                <Link to={`/login`}><button>Login</button></Link>
+                <h1 id="welcomeHomePageHeader">Welcome to Nutshell</h1>
+                <div id="loginButton">
+                <Link to={`/login`}><button className="btn btn-primary" >Login</button></Link>
+                </div>
             </>
         )
     }
