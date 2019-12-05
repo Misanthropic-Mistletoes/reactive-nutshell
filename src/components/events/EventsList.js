@@ -14,7 +14,7 @@ class EventsList extends Component {
     }
 
     componentDidMount() {
-        //getAll from EventsAPIManager, hangs on to that data, and puts it into state
+        //getAll from ApiManager, hangs on to that data, and puts it into state
         ApiManager.getAll("events")
             .then((events) => {
                 events.sort((a,b) => new Date(...a.date.split('/').reverse()) - new Date(...b.date.split('/').reverse()));
@@ -51,7 +51,7 @@ class EventsList extends Component {
                     </button>
                 </section>
                 <div className="eventsList">
-                    {/* array function that maps over events array and renders a single card for each event */}
+                    {/* array method that maps over events array and renders a single card for each event */}
                     {this.state.events.map(event =>
                         <EventCard
                             key={event.id}
