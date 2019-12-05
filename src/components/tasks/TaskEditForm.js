@@ -15,12 +15,14 @@ class TaskEditForm extends Component {
     };
 
     updateExistingTask = evt => {
+      const userId = localStorage.getItem("credentials")
       evt.preventDefault()
       this.setState({ loadingStatus: true });
       const editedTask = {
         id: this.props.match.params.taskId,
         name: this.state.taskName,
         dueDate: this.state.dueDate,
+        userId: Number(userId)
       };
 
       ApiManager.update("tasks", editedTask)
