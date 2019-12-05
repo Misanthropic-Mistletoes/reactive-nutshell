@@ -20,7 +20,6 @@ class EventCard extends Component {
           <hr />
         </div>
       </div>
-
     );
   }
 }

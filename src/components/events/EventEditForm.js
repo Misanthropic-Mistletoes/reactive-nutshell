@@ -24,10 +24,12 @@ class EventEditForm extends Component {
     // updateExistingEvent method will setState loadingStatus to true - this ensures the user cannot repeatedly click button while API is being updated
     // This method will take the updated event as an object and save to the database.
     updateExistingEvent = evt => {
+        const userId = localStorage.getItem("credentials")
         evt.preventDefault()
         this.setState({ loadingStatus: true });
         // grabs current key values and puts them onto the form
         const editedEvent = {
+          userId: Number(userId),
           id: this.props.match.params.eventId,
           title: this.state.title,
           location: this.state.location,
