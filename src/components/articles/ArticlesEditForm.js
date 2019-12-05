@@ -1,23 +1,24 @@
 // Author: Julian Garcia
 
 import React, { Component } from "react"
-import ArticlesAPIManager from "./ArticlesAPIManager"
+import ApiManager from "../modules/ApiManager"
 // import "./ArticleForm.css"
 
 class ArticlesEditForm extends Component {
     //set the initial state
     state = {
-      title: "",
+      articleTitle: "",
       synopsis: "",
       url: "",
-      loadingStatus: false,
+      timestamp:"",
+      loadingStatus: true,
     };
 
     handleFieldChange = evt => {
       const stateToChange = {}
       stateToChange[evt.target.id] = evt.target.value
       this.setState(stateToChange)
-    }
+    };
 
     updateExistingArticle = evt => {
       evt.preventDefault()
@@ -25,25 +26,27 @@ class ArticlesEditForm extends Component {
       const editedArticle = {
         id: this.props.match.params.articleId,
         title: this.state.articleTitle,
-        synopsis: this.state.synopsis
-        // employeeId: Number(this.state.employeeId)
+        synopsis: this.state.synopsis,
+        url: this.state.url,
+        timestamp: this.state.timestamp
       };
-
-      ArticlesAPIManager.update(editedArticle)
+      
+      ApiManager.update("articles", editedArticle)
       .then(() => this.props.history.push("/articles"))
-    }
-
+    };
+    
     componentDidMount() {
-      ArticlesAPIManager.get(this.props.match.params.articleId)
+      ApiManager.get("articles", this.props.match.params.articleId)
       .then(article => {
-          this.setState({
-            articleTitle: article.title,
-            synopsis: article.synopsis,
-            url: article.url,
-            loadingStatus: false,
+        this.setState({
+          articleTitle: article.title,
+          synopsis: article.synopsis,
+          url: article.url,
+          loadingStatus: false,
+          timestamp: article.timestamp
           });
       });
-    }
+    };
 
     render() {
       return (
@@ -51,6 +54,7 @@ class ArticlesEditForm extends Component {
         <form>
           <fieldset>
             <div className="formgrid">
+              <label htmlFor="articleTitle">Title</label>
               <input
                 type="text"
                 required
@@ -59,8 +63,8 @@ class ArticlesEditForm extends Component {
                 id="articleTitle"
                 value={this.state.articleTitle}
               />
-              <label htmlFor="articleTitle">Title</label>
 
+              <label htmlFor="synopsis">Synopsis</label>
               <input
                 type="text"
                 required
@@ -69,8 +73,8 @@ class ArticlesEditForm extends Component {
                 id="synopsis"
                 value={this.state.synopsis}
               />
-              <label htmlFor="synopsis">Synopsis</label>
 
+              <label htmlFor="synopsis">URL</label>
               <input
                 type="text"
                 required
@@ -79,7 +83,6 @@ class ArticlesEditForm extends Component {
                 id="url"
                 value={this.state.url}
               />
-              <label htmlFor="synopsis">URL</label>
             </div>
             <div className="alignRight">
               <button
