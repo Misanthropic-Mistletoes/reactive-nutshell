@@ -44,7 +44,6 @@ class MessageForm extends Component {
                     message: this.state.message,
                     timestamp: dateTime
                 }
-                console.log("message", message)
 
                 ApiManager.post("messages", message)
                 .then(() => {
