@@ -27,7 +27,9 @@ class MessageForm extends Component {
 
 
     constructNewMessage = evt => {
+        //Retrieve UserId from localStorage and store in variable:
         const userId = localStorage.getItem("credentials")
+        // Convert the Date.now() milliseconds to a readable date and time:
         const d = Date(Date.now());
         const dateTime = d.toString()
 
