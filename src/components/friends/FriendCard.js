@@ -12,7 +12,7 @@ class FriendCard extends Component {
     return (
       <div className="friendCard">
         <div className="friendCard-content">
-          <p><strong>{this.props.friend.user.username}</strong></p>
+          <p><strong>{this.props.friend.user.name}</strong></p>
           <hr />
         </div>
       </div>
