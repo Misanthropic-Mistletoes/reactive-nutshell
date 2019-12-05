@@ -30,6 +30,11 @@ class TasksList extends Component {
                     })
             })
     }
+     handleInputChange(complete) {
+        const target = complete.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    }
     
     render() {
         return (
