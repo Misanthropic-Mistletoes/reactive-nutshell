@@ -39,16 +39,16 @@ class ArticlesList extends Component {
     render() {
         return (
             <>
-                <div id="articles_page">
                 <h1 id="articlesHeader">Articles</h1>
-                <section>
+                <section className="flexContainer">
                     <button type="button"
                         className="newArticleButton"
                         // onClick renders articleForm.js 
                         onClick={() => { this.props.history.push("/articles/new") }}>
-                        Add A New Article
+                        + Add New Article
                     </button>
                 </section>
+                <div id="articles_page">
                 <div className="articlesList">
                     {/* array function that maps over articles array and renders a single card for each article */}
                     {this.state.articles.map(article =>

@@ -1,12 +1,63 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap');
 
-#articles_page {
+body {
     background-color: rgb(250, 208, 108);
 }
 
+h1 {
+    padding-top: 20px;
+    font-family: 'Baloo Bhai', cursive;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px #a99238;
+}
+
+button {
+    color: white;
+    font-weight: bold;
+    background-color: rgb(19, 184, 173);
+    border: 1px solid rgb(19, 184, 173);
+    border-radius: 5px;
+    margin: 15px;
+}
+
+button:hover {
+    background-color: rgb(16, 126, 119);
+    border: 1px solid rgb(16, 126, 119);
+}
+
+#articles_page {
+    background-color: rgb(250, 231, 154);
+    height: 100%;
+    border: 1px solid #d2b649;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    width: 90%;
+}
+
+#articles_form_page {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgb(250, 231, 154);
+    height: 100%;
+    border: 1px solid #d2b649;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    width: 90%;
+}
+
+.flexContainer {
+    display: flex;
+    justify-content: center;
+}
+
+
 #articlesHeader {
     padding-top: 20px;
-    padding-bottom: 10px;
     font-family: 'Baloo Bhai', cursive;
     color: white;
     text-align: center;
@@ -19,7 +70,7 @@
     background-color: rgb(19, 184, 173);
     border: 1px solid rgb(19, 184, 173);
     border-radius: 5px;
-    margin-top: 20px;
+    margin: 15px;
 }
 
 .newArticleButton:hover {
