@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap');
+
+#articles_page {
+    background-color: rgb(250, 208, 108);
+}
+
+#articlesHeader {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-family: 'Baloo Bhai', cursive;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px #a99238;
+}
+
+.newArticleButton {
+    color: white;
+    font-weight: bold;
+    background-color: rgb(19, 184, 173);
+    border: 1px solid rgb(19, 184, 173);
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.newArticleButton:hover {
+    background-color: rgb(16, 126, 119);
+    border: 1px solid rgb(16, 126, 119);
+}

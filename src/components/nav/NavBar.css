@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
+
+#acorn-logo {
+    width: 40px;
+    margin: 10px;
+}
+
+#navbar {
+    background-color: rgb(255, 255, 255, .9);
+}
+
+.nav-link {
+    /* font-family: 'Concert One', cursive; */
+    font-family: 'Kalam';
+    color: rgb(4, 46, 44);
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: rgb(16, 126, 119);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}

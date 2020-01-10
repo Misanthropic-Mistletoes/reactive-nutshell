@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import ApiManager from '../modules/ApiManager';
 
 class TaskCard extends Component {
+  state = {
+    completed: "",
+}
     
     updateTaskStatus = evt => {
+      const userId = localStorage.getItem("credentials")
       const editedTaskId = this.props.task.id
       evt.preventDefault()
       const editedTask = {
@@ -12,7 +16,7 @@ class TaskCard extends Component {
       };
       
       ApiManager.patch("tasks", editedTask)   
-      .then(this.props.getAllTasks)
+      .then(() => ApiManager.getAllOnlyForUser("tasks", userId))
     }
 
   render() {

@@ -1,13 +1,17 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
+import Acorn from "../images/acorn.png"
 import "bootstrap/dist/css/bootstrap.min.css"
+import "./NavBar.css"
 
 
 class NavBar extends Component {
     render() {
         return (
-            <nav className="navbar bg-dark text-white flex-md-nowrap p-0 shadow">
-                <ul className="nav nav-pills nav-fill">
+            <nav className="navbar text-white flex-md-nowrap p-0 shadow" id="navbar">
+                <ul className="nav nav-pills nav-fill" id="navFlex">
+                    <li>
+                        <Link to={`/`}><img src={Acorn} alt="nutshell logo" id="acorn-logo"></img></Link></li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/articles">Articles</Link>
                     </li>

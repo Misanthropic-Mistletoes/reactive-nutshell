@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import ArticleCard from './ArticlesCard'
 import './ArticlesStyles/ArticlesList.css';
 import ApiManager from '../modules/ApiManager';
+import "./ArticlesStyles/ArticlesList.css"
 
 class ArticlesList extends Component {
     // defines what this component needs to render
@@ -38,7 +39,8 @@ class ArticlesList extends Component {
     render() {
         return (
             <>
-                <h1>Articles</h1>
+                <div id="articles_page">
+                <h1 id="articlesHeader">Articles</h1>
                 <section>
                     <button type="button"
                         className="newArticleButton"
@@ -57,6 +59,7 @@ class ArticlesList extends Component {
                         {...this.props}
                         />
                     )}
+                </div>
                 </div>
             </>
         )
