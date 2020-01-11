@@ -7,7 +7,7 @@ class MessageCard extends Component {
             <div className="message-card">
                 <div className="card-content">
                     <h5>{this.props.username}</h5>
-                    <p>{this.props.message}</p>
+                    <p id="messageText">{this.props.message}</p>
                     <p>{this.props.timestamp}</p>
                 </div>
                 {Number(userId) === this.props.userId ? 

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Kalam&display=swap');
 
 body {
     background-color: rgb(250, 208, 108);
@@ -19,7 +20,7 @@ h3 {
     /* text-align: center; */
 }
 
-input {
+input, textarea {
     background-color: rgb(250, 231, 154);
     border-radius: 5px;
     border: 1px solid #d2b649;
@@ -44,7 +45,7 @@ button:hover {
     border: 1px solid rgb(16, 126, 119);
 }
 
-#articles_page, .taskCard, .eventCard {
+#articles_page, .taskCard, .eventCard, .message-card {
     background-color: rgb(250, 231, 154);
     height: 100%;
     border: 1px solid #d2b649;
@@ -94,4 +95,20 @@ button:hover {
 .newArticleButton:hover {
     background-color: rgb(16, 126, 119);
     border: 1px solid rgb(16, 126, 119);
+}
+
+textarea#message {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgb(249, 244, 226);
+    height: 100px;
+    border: 1px solid #3aaea8;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    width: 90%;
+    font-family: 'Kalam', cursive;
+    color: black;
+
 }
