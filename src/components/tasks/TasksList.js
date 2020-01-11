@@ -47,7 +47,7 @@ class TasksList extends Component {
         return (
             <>
                 <h1>Tasks</h1>
-                <section>
+                <section className="flexContainer">
                     <button type="button"
                         className="newTaskButton"
                         // onClick renders articleForm.js 

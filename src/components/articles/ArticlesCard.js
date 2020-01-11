@@ -15,11 +15,12 @@ class ArticleCard extends Component {
         <div className="card-content">
           <div>
           <img src={newspaper} alt="newspaper icon" className="newspaperIcon" />
-          <h1>Title: {this.props.article.title}</h1>
+          <a href={this.props.article.url} target="_blank">
+            <h3>{this.props.article.title}</h3>
+          </a>
           </div>
-          <p>Synopsis: {this.props.article.synopsis}</p>
-          <p>URL: {this.props.article.url}</p>
-    <p>Post date: {this.props.article.timestamp}</p>
+          <p><em>{this.props.article.synopsis}</em></p>
+    <p>Posted: {this.props.article.timestamp}</p>
           <button type="button" onClick={() => this.props.deleteArticle(this.props.article.id)}>
             Delete</button>
           <button type="button" onClick={() => { this.props.history.push(`/articles/${this.props.article.id}/edit`) }}>

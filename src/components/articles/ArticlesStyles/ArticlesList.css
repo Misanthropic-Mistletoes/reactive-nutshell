@@ -12,6 +12,24 @@ h1 {
     text-shadow: 2px 2px #a99238;
 }
 
+h3 {
+    padding-top: 20px;
+    font-family: 'Baloo Bhai', cursive;
+    color: rgb(26, 26, 26);
+    /* text-align: center; */
+}
+
+input {
+    background-color: rgb(250, 231, 154);
+    border-radius: 5px;
+    border: 1px solid #d2b649;
+    margin: 5px;
+}
+
+label {
+    margin: 5px;
+}
+
 button {
     color: white;
     font-weight: bold;
@@ -26,7 +44,7 @@ button:hover {
     border: 1px solid rgb(16, 126, 119);
 }
 
-#articles_page {
+#articles_page, .taskCard, .eventCard {
     background-color: rgb(250, 231, 154);
     height: 100%;
     border: 1px solid #d2b649;
