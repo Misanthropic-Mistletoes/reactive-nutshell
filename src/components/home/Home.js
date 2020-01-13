@@ -11,7 +11,7 @@ class Home extends Component {
             <div>
                 <h1 id="welcomeHomePageHeader">Welcome to Nutshell</h1>
                 <h3 class="subHeader">View all your articles, messages, tasks, and events... <span id="subHeader">in a nutshell</span></h3>
-                {localStorage.getItem("credentials") !== null ? (
+                {localStorage.getItem("credentials") === null ? (
                 <div id="loginButton">
                 <Link to={`/login`}><button className="btn btn-primary" >Login</button></Link>
                 </div>

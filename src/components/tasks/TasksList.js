@@ -12,7 +12,7 @@ class TasksList extends Component {
     componentDidMount() {
         const userId = localStorage.getItem("credentials")
         //getAll from ArticlesAPIManager, hangs on to that data, and puts it into state
-        ApiManager.getAllOnlyForUser("tasks", userId)
+        ApiManager.getAllOnlyForUserByDueDate("tasks", userId)
             .then((tasks) => {
                 this.setState({
                     tasks: tasks
@@ -22,7 +22,7 @@ class TasksList extends Component {
 
     getAllTasks= () => {
     const userId = localStorage.getItem
-    ApiManager.getAllOnlyForUser("tasks", userId)
+    ApiManager.getAllOnlyForUserByDueDate("tasks", userId)
     .then((tasks) => {
         this.setState({
             tasks: tasks
@@ -34,7 +34,7 @@ class TasksList extends Component {
         // handles deleting a single article from articles array and renders updated array to the DOM
         ApiManager.delete("tasks", id)
             .then(() => {
-                ApiManager.getAllOnlyForUser("tasks", userId)
+                ApiManager.getAllOnlyForUserByDueDate("tasks", userId)
                     .then((updatedTasksList) => {
                         this.setState({
                             tasks: updatedTasksList
