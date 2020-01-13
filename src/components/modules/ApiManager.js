@@ -16,9 +16,19 @@ export default {
     getAllforLoggedInUser(userId, tableName) {
         return fetch(`${remoteURL}/users/${userId}/${tableName}`).then(result => result.json())
     },
+    //getAll objects only for loggedInUser
+    getAllOnlyForUser(tableName, userId) {
+        return fetch(`${remoteURL}/${tableName}?userId=${userId}`).then(result => result.json())
+    },
+
+    //getAll objects only for loggedInUser
+    getAllOnlyForUserByDueDate(tableName, userId) {
+        return fetch(`${remoteURL}/${tableName}?userId=${userId}&_sort=dueDate`).then(result => result.json())
+    },
+
     // This fetch call uses _expand to get all objects including the name associated with the userId.
     getAllWithUserNames(tableName, userId) {
-        return fetch(`${remoteURL}/${tableName}?_expand=user`).then(result => result.json(userId))
+        return fetch(`${remoteURL}/${tableName}?_expand=user&_sort=timestamp`).then(result => result.json(userId))
     },
 
     delete(tableName, id) {

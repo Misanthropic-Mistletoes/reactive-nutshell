@@ -19,7 +19,7 @@ class TaskForm extends Component {
         const userId = localStorage.getItem("credentials")
         evt.preventDefault();
         if (this.state.taskName === "" || this.state.dueDate === "") {
-            window.alert("Please input a F***ing Due Date!");
+            window.alert("Please do not leave any fields blank");
         } else {
             this.setState({ loadingStatus: true });
             const task = {

@@ -46,6 +46,7 @@ class MessagesList extends Component {
     render() {
         return (
             <React.Fragment>
+                <h1>Messages</h1>
                 <div className="container-cards">
                     {this.state.messages.map(message =>
                         <MessageCard

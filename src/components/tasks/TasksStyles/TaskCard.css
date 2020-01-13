@@ -1,0 +1,8 @@
+#checkboxContainer {
+    float: left;
+}
+
+#taskCheckbox {
+    margin-top: 28px;
+    margin-right: 10px;
+}

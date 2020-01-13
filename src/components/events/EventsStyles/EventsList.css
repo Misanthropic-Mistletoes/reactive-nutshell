@@ -2,7 +2,8 @@
 
 /* CSS that changes styling on the first event in Events List, styling applied on Event Card */
 .eventCard:first-child {
-    background-color: #e5ecff;
+    background-color: #ffe476;
     font-weight: bold; 
     font-size: 120%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

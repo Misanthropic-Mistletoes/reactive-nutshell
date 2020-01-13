@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ApiManager from '../modules/ApiManager';
-// import './ArticleForm.css'
+import './ArticlesStyles/ArticlesList.css'
 
 class ArticlesForm extends Component {
     state = {
@@ -49,31 +49,41 @@ class ArticlesForm extends Component {
             <>
             <form>
                 <fieldset>
-                    <div className="formgrid">
-                        <label htmlFor="articleTitle">Name</label>
+                        <h1 id="articlesHeader">Add New Article</h1>
+                    <div className="formgrid" id="articles_form_page">
+                        <div>
+                        <label htmlFor="articleTitle">Name: </label>
                         <input
                         type="text"
                         required
                         onChange={this.handleFieldChange}
+                        class="articleFormInput"
                         id="articleTitle"
                         placeholder="Article Title"
                         />
-                        <label htmlFor="synopsis">Synopsis</label>
+                        </div>
+                        <div>
+                        <label htmlFor="synopsis">Synopsis: </label>
                         <input
                         type="text"
                         required
                         onChange={this.handleFieldChange}
+                        class="articleFormInput"
                         id="synopsis"
-                        placeholder="synopsis"
+                        placeholder="Synopsis"
                         />
-                        <label htmlFor="url">URL</label>
+                        </div>
+                        <div>
+                        <label htmlFor="url">URL: </label>
                         <input
                         type="text"
                         required
                         onChange={this.handleFieldChange}
+                        class="articleFormInput"
                         id="url"
                         placeholder="URL"
                         />
+                        </div>
                     </div>
                     <div className="alignRight">
                         <button
